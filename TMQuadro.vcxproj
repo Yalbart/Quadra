@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\stb_image;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\glm;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\glew\include;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\stb_truetype;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\stb_image;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\glm;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\glew\include;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\stb_image;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\glm;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\glew\include;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\stb_truetype;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\stb_image;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\glm;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\glew\include;C:\Users\Violeta\source\repos\TMQuadro\TMQuadro\libs\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +133,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Objekat.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="TMQuadro.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Objekat.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClCompile Include="Objekat.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TMQuadro.cpp" />
   </ItemGroup>
   <ItemGroup>

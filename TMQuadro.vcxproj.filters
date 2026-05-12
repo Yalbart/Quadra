@@ -16,6 +16,9 @@
     <Filter Include="src">
       <UniqueIdentifier>{fa43fe12-1a24-405f-ae9b-8593438dff0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\NewFilter1">
+      <UniqueIdentifier>{3674df43-2d36-45db-9823-9b39884092c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TMQuadro.cpp">
@@ -25,6 +28,9 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

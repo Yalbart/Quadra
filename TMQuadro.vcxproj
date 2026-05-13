@@ -133,12 +133,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Menadzer.cpp" />
     <ClCompile Include="Objekat.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TMQuadro.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Menadzer.h" />
     <ClInclude Include="Objekat.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Texture.h" />

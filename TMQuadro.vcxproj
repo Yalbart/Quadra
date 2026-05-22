@@ -133,16 +133,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Igra.cpp" />
     <ClCompile Include="InputHendler.cpp" />
+    <ClCompile Include="Kvadrant.cpp" />
     <ClCompile Include="Menadzer.cpp" />
+    <ClCompile Include="Nivo.cpp" />
     <ClCompile Include="Objekat.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TMQuadro.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Igra.h" />
     <ClInclude Include="InputHendler.h" />
+    <ClInclude Include="Kvadrant.h" />
     <ClInclude Include="Menadzer.h" />
+    <ClInclude Include="Nivo.h" />
     <ClInclude Include="Objekat.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Texture.h" />

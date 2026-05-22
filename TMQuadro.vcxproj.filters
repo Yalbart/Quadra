@@ -39,6 +39,15 @@
     <ClCompile Include="InputHendler.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Igra.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Nivo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Kvadrant.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Objekat.h">
@@ -54,6 +63,15 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="InputHendler.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Igra.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Nivo.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Kvadrant.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

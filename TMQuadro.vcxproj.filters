@@ -48,6 +48,9 @@
     <ClCompile Include="Kvadrant.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Igrac.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Objekat.h">
@@ -72,6 +75,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="Kvadrant.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Igrac.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

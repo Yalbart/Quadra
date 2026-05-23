@@ -15,14 +15,14 @@ Igra::Igra(int argc, char** argv) {
 	renderer = new Renderer(sirinaProz, visinaProz);
 	menadzerResursa = new Menadzer();
 	inputHendler = new InputHendler();
-	// nivo = new Nivo();
+	nivo = new Nivo(renderer,menadzerResursa);
 }
 
 Igra::~Igra() {
 	delete renderer;
 	delete menadzerResursa;
 	delete inputHendler;
-	// delete nivo;
+	delete nivo;
 }
 
 void Igra::run() {
@@ -30,7 +30,7 @@ void Igra::run() {
 }
 
 void Igra::procesInputa() {
-	//nivo->procesInputa(input);
+	nivo->procesInputa(inputHendler);
 }
 
 void Igra::update() {
@@ -38,12 +38,12 @@ void Igra::update() {
 	deltaTime = trenVreme - lastTime;
 	lastTime = trenVreme;
 
-	//level->update(deltaTime);
+	nivo->update(deltaTime);
 }
 
 void Igra::render() {
 	renderer->clear();
-	//level->render();
+	nivo->render();
 	glutSwapBuffers();
 }
 

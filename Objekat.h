@@ -4,7 +4,7 @@ using namespace glm;
 
 class Renderer; // ovo koristim kao deklaraciju kako ne bih morao da include celu klasu, jer mi ne treba
 				// treba mi samo da kompajler zna da ovo postoji jer koristim referencu na tip Renderer
-
+class Igrac;
 class Objekat {
 public: 
 	vec2 poz;
@@ -16,5 +16,5 @@ public:
 	virtual void update(float deltaT) = 0;
 	virtual void render(Renderer& renderer) = 0; // virtual metode koje su =0 cini klasu abstraktnom
 			// ovo je tako jer necemo koristiti objekat klasu direktno, samo klase koje ga nasledjuju
-							
+	virtual void kolizija(Igrac* igrac) {}
 };

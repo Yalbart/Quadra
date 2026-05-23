@@ -17,7 +17,7 @@ public:
 	bool jelPredjen() const;
 private:
 	std::vector<Objekat*> objekti;
-	//Igrac* igrac;
+	Igrac* igrac;
 	Renderer* renderer;
 	Menadzer* resursi;
 	bool kraj;

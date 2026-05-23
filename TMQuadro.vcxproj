@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Igra.cpp" />
+    <ClCompile Include="Igrac.cpp" />
     <ClCompile Include="InputHendler.cpp" />
     <ClCompile Include="Kvadrant.cpp" />
     <ClCompile Include="Menadzer.cpp" />
@@ -145,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Igra.h" />
+    <ClInclude Include="Igrac.h" />
     <ClInclude Include="InputHendler.h" />
     <ClInclude Include="Kvadrant.h" />
     <ClInclude Include="Menadzer.h" />

@@ -41,5 +41,8 @@ bool Nivo::jelPredjen() const {
 }
 
 void Nivo::ucitajKvadrant() {
-	//kvadranti.push_back(new Kvadrant(renderer, resursi));
+	kvadranti.push_back(new Kvadrant(renderer, resursi));
+	kvadranti.push_back(new Kvadrant(renderer, resursi));
+	kvadranti.push_back(new Kvadrant(renderer, resursi));
+	kvadranti.push_back(new Kvadrant(renderer, resursi));
 }

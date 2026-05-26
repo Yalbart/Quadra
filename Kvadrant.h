@@ -1,6 +1,6 @@
 #pragma once
 #include "Objekat.h"
-//#include"Igrac.h"
+#include"Igrac.h"
 #include <vector>
 
 class Renderer;
@@ -22,5 +22,5 @@ private:
 	Menadzer* resursi;
 	bool kraj;
 	void kontrolaKolizija();
-	void izlazIzKvadranta();
+	void KontrolaIzlazaIzKvadranta();
 };

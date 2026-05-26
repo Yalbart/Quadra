@@ -23,15 +23,16 @@ Kvadrant::~Kvadrant() {
 }
 
 void Kvadrant::procesInputa(InputHendler* inputi) {
-	//if(igrac){igrac->procesInputa(inputi)}
+	if (igrac)
+		igrac->procesInputa(inputi);
 }
 
 void Kvadrant::update(float deltaTime) {
 	for (Objekat* objekat : objekti) {
 		objekat->update(deltaTime);
 	}
-	//proveriKolizije();
-	//proveriKraj(); il kako god se vec zove ovo
+	kontrolaKolizija();
+	KontrolaIzlazaIzKvadranta(); //il kako god se vec zove ovo
 }
 
 void Kvadrant::render() {
@@ -44,7 +45,20 @@ bool Kvadrant::jelPredjen() const {
 }
 
 void Kvadrant::kontrolaKolizija() {
-	//if (!igrac) 
-	// return;
+	if (!igrac) 
+		return;
+	for (Objekat* objekat : objekti) {
+		if (objekat == igrac) continue;
+		//AABB kolizija
+		bool hit = igrac->poz.x < objekat->poz.x + objekat->vel.x &&
+			igrac->poz.x + igrac->vel.x > objekat->poz.x &&
+			igrac->poz.y < objekat->poz.y + objekat->vel.y &&
+			igrac->poz.y + igrac->vel.y > objekat->poz.y;
+		if (hit)
+			objekat->kolizija(igrac);
+	}
+}
 
+void Kvadrant::KontrolaIzlazaIzKvadranta() {
+	//dodacu kasnije
 }

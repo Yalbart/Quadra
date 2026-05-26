@@ -43,6 +43,10 @@ void Igrac::update(float deltaTime) {
 
 
 	naMerdevinama = false;
+	// ovo sam napisao ovako da ne bih pisao neku logiku sa skidanja sa merdevina
+	//tojest , da budem precizniji, smislio sam logiku da kada je igrac zapravo na merdevinama
+	//onda se naMerdevinama setuje kao true, lakse je to setovati na false svaki frejm nego pisati posebnu
+	//logiku proveravanja da li je na merdevinama ili ne, to ce hendlovati kolizija
 }
 //reset nivoa, koristice se kad igrac izgubi
 void Igrac::reset(vec2 pocPozicija) {
@@ -69,4 +73,8 @@ void Igrac::setNaZemlji(bool v) {
 
 void Igrac::setNaMerdevinama(bool v) {
 	naMerdevinama = v;
+}
+
+void Igrac::render(Renderer& renderer){
+	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel);
 }

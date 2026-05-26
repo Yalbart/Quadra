@@ -14,15 +14,18 @@ public:
 
 	void clear();
 	void drawSprite(Texture& texture, vec2 poz, vec2 vel);
+	Texture& getUmetnuTeksturu();
 private:
 	int sirinaProz;
 	int visinaProz;
 	GLuint VAO;
 	GLuint VBO;
 	GLuint shaderProgram;
+	Texture umetnaTekstura;
 
 	void initShaders();
 	void initBuffers();
+	
 
 	GLuint compileShader(const std::string& source, GLenum type);
 };

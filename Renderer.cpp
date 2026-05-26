@@ -148,3 +148,20 @@ void Renderer :: initBuffers() {
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
+
+Texture& Renderer::getUmetnuTeksturu() {
+    if (umetnaTekstura.id == 0) {
+        unsigned char white[] = { 255, 255, 255, 255 };
+        glGenTextures(1, &umetnaTekstura.id);
+        glBindTexture(GL_TEXTURE_2D, umetnaTekstura.id);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, white);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        umetnaTekstura.sirina = 1;
+        umetnaTekstura.visina = 1;
+        //OpenGL boilerplate za placeholder teksturu za probu, beli piksel, ako ne postoji napravi je
+        //ako postoji ssamo je returnuje
+    }
+    return umetnaTekstura;
+}

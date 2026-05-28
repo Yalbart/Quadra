@@ -75,6 +75,9 @@ void Igrac::setNaMerdevinama(bool v) {
 	naMerdevinama = v;
 }
 
+vec2 Igrac::getPocPozicija() {
+	return pocPozicija;
+}
 void Igrac::render(Renderer& renderer){
 	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel);
 }

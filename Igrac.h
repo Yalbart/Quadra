@@ -19,6 +19,7 @@ public:
 	bool jelNaMerdevinama() const;
 	void setNaZemlji(bool vrednost);
 	void setNaMerdevinama(bool vrednost);
+	vec2 getPocPozicija();
 private:
 	vec2 ubrzanje;
 	vec2 pocPozicija;

@@ -81,3 +81,7 @@ vec2 Igrac::getPocPozicija() {
 void Igrac::render(Renderer& renderer){
 	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel);
 }
+
+void Igrac::setUbrzanjeY(float v) {
+	ubrzanje.y = v;
+}

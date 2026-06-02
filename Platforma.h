@@ -1,0 +1,25 @@
+#pragma once
+#include "Objekat.h"
+#include "Kretanje.h"
+class Renderer;
+enum class TipPlatforme {
+	staticna,dinamicna
+};
+
+class Platforma : Objekat {
+public:
+	Platforma(vec2 poz, vec2 vel, TipPlatforme tip = TipPlatforme::staticna);
+	Platforma(vec2 poz, vec2 vel, Kretanje kretanje,float brzina, float opseg);//dodaj kretanje kao zaseban header
+
+	void update(float deltaTime) override;
+	void render(Renderer& renderer) override;
+	void kolizija(Igrac* igrac) override;
+private:
+	TipPlatforme tip;
+	Kretanje kretanje;
+	float brzina;
+	float opseg;
+	float predjenaDistanca;
+	int smer;
+
+};

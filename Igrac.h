@@ -20,6 +20,7 @@ public:
 	void setNaZemlji(bool vrednost);
 	void setNaMerdevinama(bool vrednost);
 	vec2 getPocPozicija();
+	void setUbrzanjeY(float v);
 private:
 	vec2 ubrzanje;
 	vec2 pocPozicija;

@@ -1,11 +1,12 @@
 #pragma once
 #include "Objekat.h"
+#include "Kretanje.h"
 class Renderer;
 
-enum class Kretanje {
+/*enum class Kretanje {
 	Horizontalno,
 	Vertikalno
-};
+};*/
 
 class Neprijatelj : public Objekat {
 public:

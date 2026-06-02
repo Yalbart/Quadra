@@ -54,6 +54,9 @@
     <ClCompile Include="Neprijatelj.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Platforma.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Objekat.h">
@@ -85,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="Neprijatelj.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Platforma.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Kretanje.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

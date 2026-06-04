@@ -2,8 +2,8 @@
 #include "Menadzer.h"
 #include "InputHendler.h"
 #include "Renderer.h"
-//#include "Platforma.h"
-//#include "Merdevine.h"
+#include "Platforma.h"
+#include "Merdevine.h"
 #include "Neprijatelj.h"
 
 Kvadrant::Kvadrant(Renderer* renderer, Menadzer* resursi) {

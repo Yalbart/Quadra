@@ -1,5 +1,4 @@
 #include "Renderer.h"
-#include "Texture.h"
 #include <GL/freeglut.h>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>

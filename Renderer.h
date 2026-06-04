@@ -2,9 +2,10 @@
 #include <GL/glew.h>
 #include <glm.hpp>
 #include <string>
+#include "Texture.h"
 using namespace glm;
 
-class Texture;
+
 
 class Renderer {
 

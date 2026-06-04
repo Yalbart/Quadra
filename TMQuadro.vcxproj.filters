@@ -57,6 +57,9 @@
     <ClCompile Include="Platforma.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Merdevine.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Objekat.h">
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="Kretanje.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Merdevine.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

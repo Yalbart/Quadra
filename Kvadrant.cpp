@@ -1,17 +1,12 @@
 #include "Kvadrant.h"
-#include "Menadzer.h"
-#include "InputHendler.h"
-#include "Renderer.h"
-#include "Platforma.h"
-#include "Merdevine.h"
-#include "Neprijatelj.h"
-#include <iostream>
+
 
 Kvadrant::Kvadrant(Renderer* renderer, Menadzer* resursi) {
 	this->renderer = renderer;
 	this->resursi = resursi;
 	this->igrac = nullptr;
-	this->kraj = false;
+	this->cilj = nullptr;
+	this->predjen = false;
 
 }
 
@@ -21,6 +16,7 @@ Kvadrant::~Kvadrant() {
 	}
 	objekti.clear();
 	igrac = nullptr;
+	cilj = nullptr;
 }
 
 void Kvadrant::procesInputa(InputHendler* inputi) {
@@ -47,7 +43,7 @@ void Kvadrant::render() {
 }
 
 bool Kvadrant::jelPredjen() const {
-	return kraj;
+	return cilj && cilj->stigaoDoKraja();
 }
 
 void Kvadrant::kontrolaKolizija() {
@@ -74,6 +70,7 @@ void Kvadrant::kontrolaKolizija() {
 
 void Kvadrant::KontrolaIzlazaIzKvadranta() {
 	//dodacu kasnije
+	
 }
 
 void Kvadrant::dodajObjekat(Objekat* objekat) {
@@ -82,4 +79,8 @@ void Kvadrant::dodajObjekat(Objekat* objekat) {
 
 void Kvadrant::setujIgraca(Igrac* igrac) {
 	this->igrac = igrac;
+}
+
+void Kvadrant::setujCilj(Cilj* cilj) {
+	this->cilj = cilj;
 }

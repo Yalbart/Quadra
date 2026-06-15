@@ -60,6 +60,9 @@
     <ClCompile Include="Merdevine.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Cilj.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Objekat.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Merdevine.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Cilj.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

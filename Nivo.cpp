@@ -70,6 +70,10 @@ void Nivo::ucitajKvadrant() {
 	
 	k1->dodajObjekat(new Neprijatelj(vec2(200.0f, 336.0f), vec2(32.0f, 32.0f), Kretanje::Horizontalno, 100.0f, 150.0f));
 
+	Cilj* cilj1 = new Cilj(vec2(380.0f, 336.0f), vec2(32.0f, 32.0f));
+	k1->dodajObjekat(cilj1);
+	k1->setujCilj(cilj1);
+
 	kvadranti.push_back(k1);
 	kvadranti.push_back(new Kvadrant(renderer, resursi));
 	kvadranti.push_back(new Kvadrant(renderer, resursi));

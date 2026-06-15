@@ -67,7 +67,7 @@ void Igra::napraviProzor(int argc, char** argv) {
 	glutKeyboardUpFunc(goreCallback);
 	glutSpecialFunc(specDoleCallback);
 	glutSpecialUpFunc(specGoreCallback);
-	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
+	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);//ovo je vise preventivno, da se ne bi zaglavljivali/pamtili inputi
 }
 
 void Igra::displejCallback() {

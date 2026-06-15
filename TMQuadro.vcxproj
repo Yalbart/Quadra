@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cilj.cpp" />
     <ClCompile Include="Igra.cpp" />
     <ClCompile Include="Igrac.cpp" />
     <ClCompile Include="InputHendler.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="TMQuadro.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cilj.h" />
     <ClInclude Include="Igra.h" />
     <ClInclude Include="Igrac.h" />
     <ClInclude Include="InputHendler.h" />

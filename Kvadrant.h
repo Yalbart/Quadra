@@ -1,6 +1,15 @@
 #pragma once
 #include "Objekat.h"
 #include"Igrac.h"
+#include "Cilj.h"
+#include "Menadzer.h"
+#include "InputHendler.h"
+#include "Renderer.h"
+#include "Platforma.h"
+#include "Merdevine.h"
+#include "Neprijatelj.h"
+
+#include <iostream>
 #include <vector>
 
 class Renderer;
@@ -17,12 +26,14 @@ public:
 	bool jelPredjen() const;
 	void dodajObjekat(Objekat* objekat);
 	void setujIgraca(Igrac* igrac);
+	void setujCilj(Cilj* cilj);
 private:
-	std::vector<Objekat*> objekti;
+	vector<Objekat*> objekti;
 	Igrac* igrac;
 	Renderer* renderer;
 	Menadzer* resursi;
-	bool kraj;
+	Cilj* cilj;
+	bool predjen;
 	void kontrolaKolizija();
 	void KontrolaIzlazaIzKvadranta();
 };

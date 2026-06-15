@@ -2,11 +2,12 @@
 #include "Renderer.h"
 #include "InputHendler.h"
 #include "GL/freeglut.h"
+#include <iostream>
 
 //staticne i konstantne vrednosti i ako zelim da ih podesim podesicu ih ovde u samoj klasi
-const float Igrac::brzinaPenjanja = 150;
-const float Igrac::brzinaKretanja = 300;
-const float Igrac::gravitacija = 600;
+const float Igrac::brzinaPenjanja = 40;
+const float Igrac::brzinaKretanja = 100;
+const float Igrac::gravitacija = 300;
 
 Igrac::Igrac(vec2 poz, vec2 vel):Objekat(poz, vel){
 	this->ubrzanje.x = 0.0f;
@@ -19,8 +20,12 @@ Igrac::Igrac(vec2 poz, vec2 vel):Objekat(poz, vel){
 
 void Igrac::procesInputa(InputHendler* inputi) {
 	//ovo znaci da ce non stop da se prvo stavi ubrzanje na 0, mora tako jer necu klizanje, igrac se zaustavlja u mestu cim nije pritisnuto dugme za kretanje
+	/*std::cout << "Left: " << inputi->jelSpecDole(GLUT_KEY_LEFT)
+		<< " Right: " << inputi->jelSpecDole(GLUT_KEY_RIGHT)
+		<< " velocity.x: " << ubrzanje.x << std::endl;*/
+	
 	ubrzanje.x = 0.0f; 
-
+	
 	if (inputi->jelSpecDole(GLUT_KEY_LEFT))
 		ubrzanje.x = -brzinaKretanja;
 	if (inputi->jelSpecDole(GLUT_KEY_RIGHT))
@@ -79,6 +84,7 @@ vec2 Igrac::getPocPozicija() {
 	return pocPozicija;
 }
 void Igrac::render(Renderer& renderer){
+	//std::cout << "Igrac rendering na poziciji: " << poz.x << ", " << poz.y << std::endl;
 	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel);
 }
 

@@ -5,19 +5,19 @@ InputHendler::InputHendler() {
 }
 
 void InputHendler::gore(unsigned char dugme) {
-	dugmici[dugme] = true;
-}
-
-void InputHendler::dole(unsigned char dugme) {
 	dugmici[dugme] = false;
 }
 
+void InputHendler::dole(unsigned char dugme) {
+	dugmici[dugme] = true;
+}
+
 void InputHendler::specGore(int dugme) {
-	specDugmici[dugme] = true;
+	specDugmici[dugme] = false;
 }
 
 void InputHendler::specDole(int dugme) {
-	specDugmici[dugme] = false;
+	specDugmici[dugme] = true;
 }
 
 bool InputHendler::jelDole(unsigned char dugme) const {

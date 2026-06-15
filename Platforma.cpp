@@ -2,6 +2,7 @@
 #include "Igrac.h"
 #include "Renderer.h"
 #include <algorithm>
+#include <iostream>
 
 Platforma::Platforma(vec2 poz,vec2 vel, TipPlatforme tip): Objekat(poz,vel), tip(tip), kretanje(Kretanje::Horizontalno){
 	this->brzina = 0.0f;
@@ -40,6 +41,10 @@ void Platforma::render(Renderer& renderer) {
 }
 
 void Platforma::kolizija(Igrac* igrac) {
+	//std::cout << "KOLIZIJA DETEKTOVANA" << std::endl;
+	if (igrac->jelNaMerdevinama() && jelVrhMerdevina == true)
+		return; //ako je igrac na merdevinama i takodje je na vrhu merdevina, preskoci koliziju sa platformom
+
 	float igracDonja = igrac->poz.y + igrac->vel.y;
 	float igracGornja = igrac->poz.y;
 	float igracDesna = igrac->poz.x + igrac->vel.x;
@@ -74,4 +79,8 @@ void Platforma::kolizija(Igrac* igrac) {
 		//igrac je udario u desnu ivicu platforme/bloka
 		igrac->poz.x = platfDesna;
 	}
+}
+
+void Platforma::vrhMerdevina(bool v) {
+	jelVrhMerdevina = v;
 }

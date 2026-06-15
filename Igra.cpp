@@ -38,6 +38,8 @@ void Igra::update() {
 	deltaTime = trenVreme - lastTime;
 	lastTime = trenVreme;
 
+	if (deltaTime > 0.05f) deltaTime = 0.05f; //ovo ce da cappuje delta vreme na 0.05, resava jedan bug kad se pokrene program.
+
 	nivo->update(deltaTime);
 }
 
@@ -65,6 +67,7 @@ void Igra::napraviProzor(int argc, char** argv) {
 	glutKeyboardUpFunc(goreCallback);
 	glutSpecialFunc(specDoleCallback);
 	glutSpecialUpFunc(specGoreCallback);
+	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 }
 
 void Igra::displejCallback() {
@@ -86,9 +89,11 @@ void Igra::goreCallback(unsigned char dugme, int x, int y) {
 }
 
 void Igra::specDoleCallback(int dugme, int x, int y) {
+	std::cout << "KEY DOWN fired: " << dugme << std::endl;
 	instanca->inputHendler->specDole(dugme);
 }
 
 void Igra::specGoreCallback(int dugme, int x, int y) {
+	std::cout << "KEY UP fired: " << dugme << std::endl;
 	instanca->inputHendler->specGore(dugme);
 }

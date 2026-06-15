@@ -6,7 +6,7 @@ enum class TipPlatforme {
 	staticna,dinamicna
 };
 
-class Platforma : Objekat {
+class Platforma : public Objekat {
 public:
 	Platforma(vec2 poz, vec2 vel, TipPlatforme tip = TipPlatforme::staticna);
 	Platforma(vec2 poz, vec2 vel, Kretanje kretanje,float brzina, float opseg);//dodaj kretanje kao zaseban header
@@ -14,6 +14,7 @@ public:
 	void update(float deltaTime) override;
 	void render(Renderer& renderer) override;
 	void kolizija(Igrac* igrac) override;
+	void vrhMerdevina(bool v);
 private:
 	TipPlatforme tip;
 	Kretanje kretanje;
@@ -21,5 +22,6 @@ private:
 	float opseg;
 	float predjenaDistanca;
 	int smer;
+	bool jelVrhMerdevina = false;
 
 };

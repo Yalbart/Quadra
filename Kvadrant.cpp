@@ -5,6 +5,7 @@
 #include "Platforma.h"
 #include "Merdevine.h"
 #include "Neprijatelj.h"
+#include <iostream>
 
 Kvadrant::Kvadrant(Renderer* renderer, Menadzer* resursi) {
 	this->renderer = renderer;
@@ -31,6 +32,11 @@ void Kvadrant::update(float deltaTime) {
 	for (Objekat* objekat : objekti) {
 		objekat->update(deltaTime);
 	}
+	/*if (igrac) {
+		std::cout << "Igrac: " << igrac->poz.y << " velicina: " << igrac->vel.y
+			<< " Zemlja: " << 368.0f << std::endl;
+	}
+	*/
 	kontrolaKolizija();
 	KontrolaIzlazaIzKvadranta(); //il kako god se vec zove ovo
 }
@@ -54,11 +60,26 @@ void Kvadrant::kontrolaKolizija() {
 			igrac->poz.x + igrac->vel.x > objekat->poz.x &&
 			igrac->poz.y < objekat->poz.y + objekat->vel.y &&
 			igrac->poz.y + igrac->vel.y > objekat->poz.y;
-		if (hit)
+	
+		if (hit) {
+			Merdevine* merdevine = dynamic_cast<Merdevine*>(objekat);
+			if (merdevine) {
+				merdevine->kolizija(igrac);
+				continue; // skip platform resolution for ladders
+			}
 			objekat->kolizija(igrac);
+		}
 	}
 }
 
 void Kvadrant::KontrolaIzlazaIzKvadranta() {
 	//dodacu kasnije
+}
+
+void Kvadrant::dodajObjekat(Objekat* objekat) {
+	objekti.push_back(objekat);
+}
+
+void Kvadrant::setujIgraca(Igrac* igrac) {
+	this->igrac = igrac;
 }

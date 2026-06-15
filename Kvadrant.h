@@ -15,6 +15,8 @@ public:
 	void update(float deltaTime);
 	void render();
 	bool jelPredjen() const;
+	void dodajObjekat(Objekat* objekat);
+	void setujIgraca(Igrac* igrac);
 private:
 	std::vector<Objekat*> objekti;
 	Igrac* igrac;

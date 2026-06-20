@@ -9,10 +9,12 @@
 #include "Neprijatelj.h"
 #include "Kretanje.h"
 
-Nivo::Nivo(Renderer* renderer, Menadzer* resursi ) {
+Nivo::Nivo(Renderer* renderer, Menadzer* resursi,int sirinaProz,int visinaProz ) {
 	this->renderer = renderer;
 	this->resursi = resursi;
 	this->trenutniKvadrant = 0;
+	this->sirinaProz = sirinaProz;
+	this->visinaProz = visinaProz;
 	ucitajKvadrant();
 }
 
@@ -36,8 +38,12 @@ void Nivo::update(float deltaTime){
 }
 
 void Nivo::render() {
-	if (trenutniKvadrant < (int)kvadranti.size())
-		kvadranti[trenutniKvadrant]->render();
+	//if (trenutniKvadrant < (int)kvadranti.size())
+		//kvadranti[trenutniKvadrant]->render();
+	for (Kvadrant* k : kvadranti) {
+		k->render(k->pomeraj);
+	}
+
 }
 
 bool Nivo::jelPredjen() const {
@@ -47,10 +53,16 @@ bool Nivo::jelPredjen() const {
 
 void Nivo::ucitajKvadrant() {
 
-	Kvadrant* k1 = new Kvadrant(renderer, resursi);
+	float sk = sirinaProz / 2.0f; //sk - sirina kvadranta, sluzi za scale-ing
+	float vk = visinaProz / 2.0f; //vk - visina kvadranta, sluzi isto za scale-ing
 
-	//gore desno pocinje igrac
-	Igrac* igrac = new Igrac(vec2(50.0f, 50.0f), vec2(32.0f, 32.0f));
+	Kvadrant* k1 = new Kvadrant(renderer, resursi,vec2(0.0f,0.0f)); // gore levo, prvi kvadrant 
+	Kvadrant* k2 = new Kvadrant(renderer, resursi, vec2(sk, 0.0f)); // gore desno, drugi kvadrant
+	Kvadrant* k3 = new Kvadrant(renderer, resursi, vec2(sk, vk)); //dole desno
+	Kvadrant* k4 = new Kvadrant(renderer, resursi, vec2(0.0f, vk)); //dole levo
+
+	//gore levo pocinje igrac
+	Igrac* igrac = new Igrac(vec2(sk* 0.1f, vk * 0.1f), vec2(32.0f, 32.0f));
 	k1->dodajObjekat(igrac);
 	k1->setujIgraca(igrac);
 
@@ -61,21 +73,27 @@ void Nivo::ucitajKvadrant() {
 // dakle redosled dodavanja objekata u kvadrant je 1.MERDEVINE pa onda 2.PLATFORME
 	Platforma* platformaZaMerdevine = new Platforma(vec2(100.0f,272.0f),vec2(120.0f,16.0f));
 	platformaZaMerdevine->vrhMerdevina(true);
+	Merdevine* merdevine1 = new Merdevine(vec2(sk* 0.25f, vk *0.5f), vec2(16.0f, vk* 0.25f));
+	Platforma* platforma1 = new Platforma(vec2(0.0f, vk - 32.0f), vec2(sk, 32.0f));
+	Platforma* platforma2 = new Platforma(vec2(sk* 0.6f, vk * 0.5f), vec2(sk * 0.3f, 16.0f));
+	Neprijatelj* neprijatelj1 = new Neprijatelj(vec2(sk * 0.5f, vk - 64.0f), vec2(32.0f, 32.0f), Kretanje::Horizontalno, 100.0f, sk *0.2f);
+	Cilj* cilj1 = new Cilj(vec2(sk - 20.0f, vk - 64.0f), vec2(32.0f, 32.0f));
+
+
 
 	//dodajem prvo merdevine pa onda platforme
-	k1->dodajObjekat(new Merdevine(vec2(100.0f, 272.0f), vec2(16.0f, 96.0f)));
-	k1->dodajObjekat(new Platforma(vec2(0.0f, 368.0f), vec2(400.0f, 32.0f)));
+	k1->dodajObjekat(merdevine1);
+	k1->dodajObjekat(platforma1);
 	k1->dodajObjekat(platformaZaMerdevine);
-	k1->dodajObjekat(new Platforma(vec2(250.0f, 176.0f), vec2(120.0f, 16.0f)));
+	k1->dodajObjekat(platforma2);
 	
-	k1->dodajObjekat(new Neprijatelj(vec2(200.0f, 336.0f), vec2(32.0f, 32.0f), Kretanje::Horizontalno, 100.0f, 150.0f));
+	k1->dodajObjekat(neprijatelj1);
 
-	Cilj* cilj1 = new Cilj(vec2(380.0f, 336.0f), vec2(32.0f, 32.0f));
 	k1->dodajObjekat(cilj1);
 	k1->setujCilj(cilj1);
 
 	kvadranti.push_back(k1);
-	kvadranti.push_back(new Kvadrant(renderer, resursi));
-	kvadranti.push_back(new Kvadrant(renderer, resursi));
-	kvadranti.push_back(new Kvadrant(renderer, resursi));
+	kvadranti.push_back(k2);
+	kvadranti.push_back(k3);
+	kvadranti.push_back(k4);
 }

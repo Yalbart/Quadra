@@ -12,7 +12,7 @@ public:
 	Platforma(vec2 poz, vec2 vel, Kretanje kretanje,float brzina, float opseg);//dodaj kretanje kao zaseban header
 
 	void update(float deltaTime) override;
-	void render(Renderer& renderer) override;
+	void render(Renderer& renderer, vec2 pomeraj) override;
 	void kolizija(Igrac* igrac) override;
 	void vrhMerdevina(bool v);
 private:

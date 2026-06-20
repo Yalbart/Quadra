@@ -22,8 +22,8 @@ void Neprijatelj::update(float deltaTime){
 		smer *= -1;
 	}
 }
-void Neprijatelj::render(Renderer& renderer) {
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel);
+void Neprijatelj::render(Renderer& renderer,vec2 pomeraj) {
+	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz + pomeraj, vel);
 }
 void Neprijatelj::kolizija(Igrac* igrac) {
 	igrac->reset(igrac->getPocPozicija());

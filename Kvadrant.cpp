@@ -1,12 +1,13 @@
 #include "Kvadrant.h"
 
 
-Kvadrant::Kvadrant(Renderer* renderer, Menadzer* resursi) {
+Kvadrant::Kvadrant(Renderer* renderer, Menadzer* resursi, vec2 pomeraj) {
 	this->renderer = renderer;
 	this->resursi = resursi;
 	this->igrac = nullptr;
 	this->cilj = nullptr;
 	this->predjen = false;
+	this->pomeraj = pomeraj;
 
 }
 
@@ -37,9 +38,9 @@ void Kvadrant::update(float deltaTime) {
 	KontrolaIzlazaIzKvadranta(); //il kako god se vec zove ovo
 }
 
-void Kvadrant::render() {
+void Kvadrant::render(vec2 pomeraj) {
 	for (Objekat* objekat : objekti)
-		objekat->render(*renderer);
+		objekat->render(*renderer, pomeraj);
 }
 
 bool Kvadrant::jelPredjen() const {

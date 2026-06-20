@@ -18,22 +18,23 @@ class InputHendler;
 
 class Kvadrant {
 public:
-	Kvadrant(Renderer* renderer, Menadzer* menadzerResursa);
+	Kvadrant(Renderer* renderer, Menadzer* menadzerResursa, vec2 pomeraj);
 	~Kvadrant();
 	void procesInputa(InputHendler* inputi);
 	void update(float deltaTime);
-	void render();
+	void render(vec2 pomeraj);
 	bool jelPredjen() const;
 	void dodajObjekat(Objekat* objekat);
 	void setujIgraca(Igrac* igrac);
 	void setujCilj(Cilj* cilj);
+	vec2 pomeraj; // dodato 20.06. ovo sluzi za scale-ovanje sa dimenzijama ekrana i crtanje kvadranta na ekranu, pomeraj izmedju kvadranta
 private:
 	vector<Objekat*> objekti;
 	Igrac* igrac;
 	Renderer* renderer;
 	Menadzer* resursi;
 	Cilj* cilj;
-	bool predjen;
+	bool predjen; // flag da li je kvadrant predjen, trebace za tajmer
 	void kontrolaKolizija();
 	void KontrolaIzlazaIzKvadranta();
 };

@@ -8,7 +8,7 @@ class InputHendler;
 
 class Nivo {
 public:
-	Nivo(Renderer* renderer, Menadzer* menadzerResursa);
+	Nivo(Renderer* renderer, Menadzer* menadzerResursa, int sirinaProz, int visinaProz);
 	~Nivo();
 	void procesInputa(InputHendler* inputi);
 	void update(float deltaTime);
@@ -17,6 +17,8 @@ public:
 private:
 	std::vector<Kvadrant*> kvadranti;
 	int trenutniKvadrant;
+	int sirinaProz;
+	int visinaProz;
 	Renderer* renderer;
 	Menadzer* resursi;
 	void ucitajKvadrant();

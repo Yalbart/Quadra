@@ -5,8 +5,6 @@ Igra* Igra::instanca = nullptr;
 
 Igra::Igra(int argc, char** argv) {
 	jelRun = true;
-	sirinaProz = 800;
-	visinaProz = 450;
 	lastTime = 0.0f;
 	deltaTime = 0.0f;
 	instanca = this;
@@ -15,7 +13,7 @@ Igra::Igra(int argc, char** argv) {
 	renderer = new Renderer(sirinaProz, visinaProz);
 	menadzerResursa = new Menadzer();
 	inputHendler = new InputHendler();
-	nivo = new Nivo(renderer,menadzerResursa);
+	nivo = new Nivo(renderer,menadzerResursa, sirinaProz, visinaProz);
 }
 
 Igra::~Igra() {
@@ -52,22 +50,24 @@ void Igra::render() {
 void Igra::napraviProzor(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+	sirinaProz = glutGet(GLUT_SCREEN_WIDTH);
+	visinaProz = glutGet(GLUT_SCREEN_HEIGHT);
 	glutInitWindowSize(sirinaProz, visinaProz);
 	glutCreateWindow("TMQuadro");
+	glutFullScreen();
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
 	GLenum glew = glewInit();
 	if (glew != GLEW_OK) {
 		std::cout << "GLEW ne radi :( : " << glewGetErrorString(glew) << std::endl;
 	}
-
+	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);//ovo je vise preventivno, da se ne bi zaglavljivali/pamtili inputi
 	glutDisplayFunc(displejCallback);
 	glutIdleFunc(idleCallback);
 	glutKeyboardFunc(doleCallback);
 	glutKeyboardUpFunc(goreCallback);
 	glutSpecialFunc(specDoleCallback);
 	glutSpecialUpFunc(specGoreCallback);
-	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);//ovo je vise preventivno, da se ne bi zaglavljivali/pamtili inputi
 }
 
 void Igra::displejCallback() {

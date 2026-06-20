@@ -83,9 +83,9 @@ void Igrac::setNaMerdevinama(bool v) {
 vec2 Igrac::getPocPozicija() {
 	return pocPozicija;
 }
-void Igrac::render(Renderer& renderer){
+void Igrac::render(Renderer& renderer, vec2 pomeraj){
 	//std::cout << "Igrac rendering na poziciji: " << poz.x << ", " << poz.y << std::endl;
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel);
+	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz + pomeraj, vel);
 }
 
 void Igrac::setUbrzanjeY(float v) {

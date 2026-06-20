@@ -44,6 +44,7 @@ void Igra::update() {
 void Igra::render() {
 	renderer->clear();
 	nivo->render();
+	renderer->crtajLinije(sirinaProz, visinaProz);
 	glutSwapBuffers();
 }
 
@@ -81,6 +82,9 @@ void Igra::idleCallback() {
 }
 
 void Igra::doleCallback(unsigned char dugme, int x, int y) {
+	if (dugme == 27) //27 je ESC
+		exit(0);
+
 	instanca->inputHendler->dole(dugme);
 }
 

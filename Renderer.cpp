@@ -88,6 +88,26 @@ void Renderer::drawSprite(Texture& textura,vec2 poz, vec2 vel) {
     glBindVertexArray(0);
 }
 
+void Renderer::crtajLinije(int sirinaProz, int visinaProz)
+{
+    //brdo starog opengl koda za crtanje linija, hardkod hardkor, da ne pravimo sejder za bezveze
+    glUseProgram(0);//gasimo sejdere ne treba nam za ovaj tip crtanja
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, sirinaProz, visinaProz, 0, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glColor3f(0.3f, 0.3f, 0.3f);
+    glBegin(GL_LINES);
+    //prvo vertikalna linija
+    glVertex2f(sirinaProz / 2.0f, 0);
+    glVertex2f(sirinaProz / 2.0f, visinaProz);
+    //pa onda i horizontalna
+    glVertex2f(0, visinaProz / 2.0f);
+    glVertex2f(sirinaProz, visinaProz / 2.0f);
+    glEnd();
+}
+
 GLuint Renderer::compileShader(const std::string& source, GLenum type) {
     GLuint shader = glCreateShader(type);
     const char* src = source.c_str();

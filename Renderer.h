@@ -15,6 +15,7 @@ public:
 
 	void clear();
 	void drawSprite(Texture& texture, vec2 poz, vec2 vel);
+	void crtajLinije(int sirinaProz, int visinaProz); //20.06. crta linije izmedju kvadranta, vizuelna pomoc za dev
 	Texture& getUmetnuTeksturu();
 private:
 	int sirinaProz;

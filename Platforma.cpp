@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <iostream>
 
+
 Platforma::Platforma(vec2 poz,vec2 vel, TipPlatforme tip): Objekat(poz,vel), tip(tip), kretanje(Kretanje::Horizontalno){
 	this->brzina = 0.0f;
 	this->opseg = 0.0f;

@@ -73,7 +73,7 @@ void Renderer::drawSprite(Texture& textura,vec2 poz, vec2 vel) {
     mat4 model = mat4(1.0f);
     model = translate(model, vec3(poz, 0.0f));
     model = scale(model, vec3(vel, 0.0f));
-    mat4 projekcija = ortho(0.0f,(float)visinaProz,(float)sirinaProz,0.0f,-1.0f,1.0f);
+    mat4 projekcija = ortho(0.0f,(float)sirinaProz,(float)visinaProz,0.0f,-1.0f,1.0f);
     //mogu ovo da optimizujem, ne mora da se svaki frejm pravi nova projection matrica, ODRADITI KASNIJE
 
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uModel"), 1, GL_FALSE, value_ptr(model));

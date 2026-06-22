@@ -53,6 +53,7 @@ bool Nivo::jelPredjen() const {
 
 void Nivo::ucitajKvadrant() {
 
+
 	float sk = sirinaProz / 2.0f; //sk - sirina kvadranta, sluzi za scale-ing
 	float vk = visinaProz / 2.0f; //vk - visina kvadranta, sluzi isto za scale-ing
 
@@ -62,7 +63,7 @@ void Nivo::ucitajKvadrant() {
 	Kvadrant* k4 = new Kvadrant(renderer, resursi, vec2(0.0f, vk)); //dole levo
 
 	//gore levo pocinje igrac
-	Igrac* igrac = new Igrac(vec2(sk* 0.1f, vk * 0.1f), vec2(32.0f, 32.0f));
+	Igrac* igrac = new Igrac(vec2(0.0f, 0.0f), vec2(sk/32.0f, vk/32.0f));
 	k1->dodajObjekat(igrac);
 	k1->setujIgraca(igrac);
 
@@ -71,15 +72,15 @@ void Nivo::ucitajKvadrant() {
 //a tek ONDA platforme, u sustini nastaje jedan verovatno lako resiv bug gde igrac propada kroz platformu
 //jer se prvo gleda kolizija sa merdevinama a tek onda platformor svaki frejm
 // dakle redosled dodavanja objekata u kvadrant je 1.MERDEVINE pa onda 2.PLATFORME
-	Platforma* platformaZaMerdevine = new Platforma(vec2(100.0f,272.0f),vec2(120.0f,16.0f));
+	Platforma* platformaZaMerdevine = new Platforma(vec2(0.0f,40.0f),vec2(sk / 16.0f, vk / 32.0f));
 	platformaZaMerdevine->vrhMerdevina(true);
-	Merdevine* merdevine1 = new Merdevine(vec2(sk* 0.25f, vk *0.5f), vec2(16.0f, vk* 0.25f));
-	Platforma* platforma1 = new Platforma(vec2(0.0f, vk - 32.0f), vec2(sk, 32.0f));
+	Merdevine* merdevine1 = new Merdevine(vec2(0.0f, 40.0f), vec2(16.0f, 64.0f));
+	Platforma* platforma1 = new Platforma(vec2(0.0f, 104.0f), vec2(540.0f, vk/32));
 	Platforma* platforma2 = new Platforma(vec2(sk* 0.6f, vk * 0.5f), vec2(sk * 0.3f, 16.0f));
 	Neprijatelj* neprijatelj1 = new Neprijatelj(vec2(sk * 0.5f, vk - 64.0f), vec2(32.0f, 32.0f), Kretanje::Horizontalno, 100.0f, sk *0.2f);
 	Cilj* cilj1 = new Cilj(vec2(sk - 20.0f, vk - 64.0f), vec2(32.0f, 32.0f));
 
-
+	
 
 	//dodajem prvo merdevine pa onda platforme
 	k1->dodajObjekat(merdevine1);

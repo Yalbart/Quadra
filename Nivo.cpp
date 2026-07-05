@@ -60,7 +60,7 @@ void Nivo::ucitajKvadrant() {
 	float sk = sirinaProz / 2.0f; //sk - sirina kvadranta, sluzi za scale-ing
 	float vk = visinaProz / 2.0f; //vk - visina kvadranta, sluzi isto za scale-ing
 	float horpomeraj = sk/16.0f; //ovo sluzi za dizajn nivoa, u sustini jedna kockica
-	float verpomeraj = vk / 12.0f; //isto samo visina jedne kkockice u kvadrantu...
+	float verpomeraj = vk / 12.0f; //isto samo visina jedne kockice u kvadrantu...
 
 	//pravljenje objekata kvadranta...
 	Kvadrant* k1 = new Kvadrant(renderer, resursi,vec2(0.0f,0.0f)); // gore levo, prvi kvadrant 
@@ -71,75 +71,104 @@ void Nivo::ucitajKvadrant() {
 	//gore levo pocinje igrac
 	Igrac* igrac = new Igrac(vec2(0.0f, 0.0f), vec2(sk/32.0f, vk/24.0f));
 
-	//!!!PRVI KVADRANT OBJEKTI!!!:
+
 	//! UPOZORENJE! SPAGHETTI KOD! Level dizajn je HARDKODOVAN! Za sad barem... nemam drugo resenje, a ova funkcija se poziva i pokrece samo jedan put,pa iako je ruzno za citanje, nije toliko lose...
 	//takodje za napomenuti, ja kvadrant delim na 16x12 i u odnosu na to dizajniram kvadrant
 	//lakse mi je tako, nego odokativno il da sad racunam neke float vrednosti i pozicije...
 	//prolazim kroz pozicije kao kroz matricu, zato je kod ovako ruzan, moja ideja a bolju trenutno nemam.
 
+	//jos jedna brza napomena NAMING CONVENTION: varijable ce nositi imena PRVIRED DRUGIRED TRECIRED ITD...
+	//iako cu pisati da redova ima 12 (od nultog 0 do jedanaestog 11) u imenima varijabli
+	//poput prviRedPlatf ili treciRedMerdev1 ce redovi znaciti igrivi delovi kvadranta umesto
+	//bukvalnog reda u mojoj 16x12 matrici tj gridu na osnovu kojeg dizajniram nivo
 
-	for (int j = 4; j < 5; j++) {
-		for (int i = 0; i < 16; i++) {
-			if (i == 2 || i == 4 || i == 5 || i == 7 || i == 9 || i == 12) {
-				k1->dodajObjekat(new Neprijatelj(vec2(horpomeraj * i + sk / 32.0f -6.0f, verpomeraj * j), vec2(12.0f, 12.0f), Kretanje::Vertikalno, 50.0f, vk / 6.0f, true));
-				k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 24.0f)));
-			}}}
+	//!!!PRVI KVADRANT OBJEKTI!!!:
 
+	//kvadrant podeljen na 16x12 matricu, prvo pravim platforme i merdevine u 2 i 3 redu
 	for (int i = 0; i < 16; i++) {
-		for (int j = 0; j < 4; j++) {
-			if (i != 3 && i != 6 && i != 10 && i != 11 && i != 13 && i != 14) {
-				if (j != 0 && j != 1)
-					if (i != 15)
+		for (int j = 2; j < 4; j++) {
+			if (i != 3 && i != 6 && i != 10 && i != 11 && i!=13 && i!=14 && i!=15) {
 						k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f)));
-					else if (j == 2) {
-						Platforma* prviRedPlatf = new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 32.0f));
+					 if (j == 2) {
+						Platforma* prviRedPlatf = new Platforma(vec2(horpomeraj * 15, verpomeraj * j), vec2(sk / 16.0f, vk / 32.0f));
 						prviRedPlatf->vrhMerdevina(true);
-						Merdevine* prviRedMerdev = new Merdevine(vec2(horpomeraj * i+5.0f, verpomeraj * j),vec2(sk/20.0f,vk/3.0f));
+						Merdevine* prviRedMerdev = new Merdevine(vec2(horpomeraj * 15 + 5.0f, verpomeraj * j), vec2(sk / 20.0f, vk / 3.0f));
 						k1->dodajObjekat(prviRedMerdev);
 						k1->dodajObjekat(prviRedPlatf);
-					}}
-
-			else{if (j == 3)
-					k1->dodajObjekat(new Neprijatelj(vec2(horpomeraj* i, verpomeraj* j), vec2(sk / 16.0f, vk / 12.0f), Kretanje::Horizontalno, 0.0f, 0.0f));
+					}
+			}
+			//bodlje i pomerajuce platforme u 2. i 3. redu
+			else if(i!=15){
+				if (j == 3)
+					k1->dodajObjekat(new Neprijatelj(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f), Kretanje::Horizontalno, 0.0f, 0.0f));
 				if (j == 2) {
 					if (i != 11 && i != 14)
-						k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 32.0f),Kretanje::Horizontalno,25.0f,horpomeraj));
-					 }}}
+						k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 32.0f), Kretanje::Horizontalno, 25.0f, horpomeraj));
+				}
+			}
+		}
 
+		//red broj 4, prvi red cevki sa kapljicama
+		if (i == 2 || i == 4 || i == 5 || i == 7 || i == 9 || i == 12) {
+			k1->dodajObjekat(new Neprijatelj(vec2(horpomeraj * i + sk / 32.0f - 6.0f, verpomeraj * 4), vec2(12.0f, 12.0f), Kretanje::Vertikalno, 50.0f, vk / 6.0f, true));
+			k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * 4), vec2(sk / 16.0f, vk / 24.0f)));
+		}
+
+		//redovi 6 i 7 platforme kockice, takodje merdevine za nizi nivo
 		for (int j = 6; j < 8; j++) {
 			if (i != 0)
-				k1->dodajObjekat(new Platforma(vec2(horpomeraj*i,verpomeraj*j),vec2(sk/16.0f,vk/12.0f)));
+				k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f)));
 			else {
 				Merdevine* drugiRedMerdev = new Merdevine(vec2(horpomeraj * i + 5.0f, verpomeraj * j), vec2(sk / 20.0f, vk / 6.0f));
 				k1->dodajObjekat(drugiRedMerdev);
-			}}}
+			}
+		}
 
+		//red broj 8 cevke i kapljice, brzinaKaplj sluzi samo da tri uzastopne cevke na mestima 10 11 i 12 imaju razlicite brzine
+		if (i == 2 || i > 7 && i != 9 && i < 13) {
+			int brzinaKaplj = 70.0f;
+			if (i == 10)
+				brzinaKaplj += 10.0f;
+			else if (i == 11)
+				brzinaKaplj += 12.5f;
+			else
+				brzinaKaplj += 15.0f;
+			k1->dodajObjekat(new Neprijatelj(vec2(horpomeraj * i + sk / 32.0f - 6.0f, verpomeraj * 8), vec2(12.0f, 12.0f), Kretanje::Vertikalno, brzinaKaplj, vk / 4.0f, true));
+			k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * 8), vec2(sk / 16.0f, vk / 24.0f)));
+		}
 
+		//redovi 9 i 10 platforme kockice
+		for (int j = 9; j < 11; j++) {
+			if (i < 2 || i>4 && i < 8 || i>13)
+				k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f)));
+		}
 
+		//merdevine 9. red broj 1
+		Platforma* treciRedPlatf1 = new Platforma(vec2(horpomeraj * 4, verpomeraj * 9), vec2(sk / 16.0f, vk / 32.0f));
+		treciRedPlatf1->vrhMerdevina(true);
+		Merdevine* treciRedMerdev1 = new Merdevine(vec2(horpomeraj * 4+ 5.0f, verpomeraj * 9), vec2(sk / 20.0f, vk / 6.0f));
+		k1->dodajObjekat(treciRedMerdev1);
+		k1->dodajObjekat(treciRedPlatf1);
+		//merdevine 9. red broj 2
+		Platforma* treciRedPlatf2 = new Platforma(vec2(horpomeraj * 13, verpomeraj * 9), vec2(sk / 16.0f, vk / 32.0f));
+		treciRedPlatf2->vrhMerdevina(true);
+		Merdevine* treciRedMerdev2 = new Merdevine(vec2(horpomeraj * 13 + 5.0f, verpomeraj * 9), vec2(sk / 20.0f, vk / 6.0f));
+		k1->dodajObjekat(treciRedMerdev2);
+		k1->dodajObjekat(treciRedPlatf2);
 
+		//red 11 tj. poslednji red prvog kvadranta, sve platforme kockice
+		k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * 11), vec2(sk / 16.0f, vk / 12.0f)));
+		
+		//sir tj. cilj
+		Cilj* cilj1 = new Cilj(vec2(horpomeraj*15+22.0f ,verpomeraj*8+16.0f), vec2(16.0f, 16.0f));
+		k1->dodajObjekat(cilj1);
+		k1->setujCilj(cilj1);
 
-	Platforma* platformaZaMerdevine = new Platforma(vec2(0.0f,40.0f),vec2(sk / 16.0f, vk / 32.0f));
-	platformaZaMerdevine->vrhMerdevina(true);
-	Merdevine* merdevine1 = new Merdevine(vec2(0.0f, 40.0f), vec2(16.0f, 64.0f));
-	Neprijatelj* neprijatelj1 = new Neprijatelj(vec2(sk * 0.5f, vk - 64.0f), vec2(32.0f, 32.0f), Kretanje::Horizontalno, 100.0f, sk *0.2f,true);
-	Cilj* cilj1 = new Cilj(vec2(sk - 20.0f, vk - 64.0f), vec2(32.0f, 32.0f));
-
-	
-
-
-
-	//dodajem prvo merdevine pa onda platforme
-	
+	}
+	//dodajem igraca na kraju, kako bi se renderovao ispred svega ostalog
 	k1->dodajObjekat(igrac);
 	k1->setujIgraca(igrac);
 	
-	k1->dodajObjekat(neprijatelj1);
-
-	k1->dodajObjekat(cilj1);
-	k1->setujCilj(cilj1);
-
-
-
 
 	//KONACNO DODAVANJE KVADRANTA NA NIVO
 	kvadranti.push_back(k1);

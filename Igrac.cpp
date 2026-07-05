@@ -83,7 +83,7 @@ vec2 Igrac::getPocPozicija() {
 }
 void Igrac::render(Renderer& renderer, vec2 pomeraj){
 	//std::cout << "Igrac rendering na poziciji: " << poz.x << ", " << poz.y << std::endl;
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz + pomeraj, vel, vec3(1.0f,1.0f,0.0f));
+	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz + pomeraj, vel, vec3(0.0f,1.0f,0.0f));
 }
 
 void Igrac::setUbrzanjeY(float v) {

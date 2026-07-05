@@ -2,12 +2,13 @@
 #include "Igrac.h"
 #include "Renderer.h"
 
-Neprijatelj::Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg) : Objekat(poz,vel), kretanje(kretanje) {
+Neprijatelj::Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg,bool resetPoz) : Objekat(poz,vel), kretanje(kretanje) {
 	this->brzina = brzina;
 	this->opseg = opseg;
 	this->predjenaDistanca = 0.0f;
 	this->smer = 1;
 	this->pocPozicija = poz;
+	this->resetPoz = resetPoz;
 }
 
 void Neprijatelj::update(float deltaTime){
@@ -19,11 +20,14 @@ void Neprijatelj::update(float deltaTime){
 	predjenaDistanca += brzina * deltaTime;
 	if (predjenaDistanca >= opseg) {
 		predjenaDistanca = 0.0f;
-		smer *= -1;
+		if (resetPoz)
+			poz = pocPozicija;
+		else
+			smer *= -1;
 	}
 }
 void Neprijatelj::render(Renderer& renderer,vec2 pomeraj) {
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz + pomeraj, vel);
+	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz + pomeraj, vel,vec3(1.0f,0.0f,0.0f));
 }
 void Neprijatelj::kolizija(Igrac* igrac) {
 	igrac->reset(igrac->getPocPozicija());

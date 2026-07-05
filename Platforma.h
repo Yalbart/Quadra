@@ -8,7 +8,7 @@ enum class TipPlatforme {
 
 class Platforma : public Objekat {
 public:
-	Platforma(vec2 poz, vec2 vel, TipPlatforme tip = TipPlatforme::staticna);
+	Platforma(vec2 poz, vec2 vel);
 	Platforma(vec2 poz, vec2 vel, Kretanje kretanje,float brzina, float opseg);//dodaj kretanje kao zaseban header
 
 	void update(float deltaTime) override;

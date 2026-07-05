@@ -27,9 +27,10 @@ static const char* fragmentShaderSource = R"(
     out vec4 fragColor;
 
     uniform sampler2D uTexture;
+    uniform vec3 uColor;
 
     void main() {
-        fragColor = texture(uTexture, vTexCoord);
+        fragColor = texture(uTexture, vTexCoord) * vec4(uColor,1.0);
     }
 )";
 
@@ -67,7 +68,7 @@ void Renderer::clear() {
 // ova funkcija (clear) ce se pozivati na pocetku svakog frame-a kako se frame-ovi ne bi crtali jedni
 // preko drugih i naravno kako bi mogli novi upravo izracunati frame-ovi da se iscrtaju na cistom ekranu
 // GL COLOR BUFFER BIT je specifican GLbitfield tip koji je samo flag kakvu vrstu ciscenja ekrana trazimo
-void Renderer::drawSprite(Texture& textura,vec2 poz, vec2 vel) {
+void Renderer::drawSprite(Texture& textura,vec2 poz, vec2 vel,vec3 boja) {
     glUseProgram(shaderProgram);
 
     mat4 model = mat4(1.0f);
@@ -76,8 +77,11 @@ void Renderer::drawSprite(Texture& textura,vec2 poz, vec2 vel) {
     mat4 projekcija = ortho(0.0f,(float)sirinaProz,(float)visinaProz,0.0f,-1.0f,1.0f);
     //mogu ovo da optimizujem, ne mora da se svaki frejm pravi nova projection matrica, ODRADITI KASNIJE
 
+
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uModel"), 1, GL_FALSE, value_ptr(model));
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uProjection"), 1, GL_FALSE, value_ptr(projekcija));
+    glUniform3f(glGetUniformLocation(shaderProgram, "uColor"), boja.r, boja.g, boja.b); //boje dok ne ubacim teksture
+
 
     glActiveTexture(GL_TEXTURE0);
     textura.bind();
@@ -100,11 +104,23 @@ void Renderer::crtajLinije(int sirinaProz, int visinaProz)
     glColor3f(0.3f, 0.3f, 0.3f);
     glBegin(GL_LINES);
     //prvo vertikalna linija
-    glVertex2f(sirinaProz / 2.0f, 0);
-    glVertex2f(sirinaProz / 2.0f, visinaProz);
-    //pa onda i horizontalna
-    glVertex2f(0, visinaProz / 2.0f);
-    glVertex2f(sirinaProz, visinaProz / 2.0f);
+    float horpomeraj = sirinaProz / 32.0f;
+    float verpomeraj = visinaProz / 24.0f;
+    for (int i = 0; i < 32; i++) {
+        if (i != 0)
+        {
+            glVertex2f(horpomeraj * i, 0);
+            glVertex2f(horpomeraj*i,visinaProz);
+        }
+    }
+    for (int i = 0; i < 24; i++)
+    {
+        if (i != 0) {
+            glVertex2f(0, verpomeraj * i);
+            glVertex2f(sirinaProz, verpomeraj * i);
+        }
+    }
+   
     glEnd();
 }
 

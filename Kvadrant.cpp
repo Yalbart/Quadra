@@ -29,11 +29,7 @@ void Kvadrant::update(float deltaTime) {
 	for (Objekat* objekat : objekti) {
 		objekat->update(deltaTime);
 	}
-	/*if (igrac) {
-		std::cout << "Igrac: " << igrac->poz.y << " velicina: " << igrac->vel.y
-			<< " Zemlja: " << 368.0f << std::endl;
-	}
-	*/
+
 	kontrolaKolizija();
 	KontrolaIzlazaIzKvadranta(); //il kako god se vec zove ovo
 }

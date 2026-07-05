@@ -4,17 +4,17 @@
 #include <algorithm>
 #include <iostream>
 
-
-Platforma::Platforma(vec2 poz,vec2 vel, TipPlatforme tip): Objekat(poz,vel), tip(tip), kretanje(Kretanje::Horizontalno){
+//staticna platforma , njen konstruktor
+Platforma::Platforma(vec2 poz,vec2 vel): Objekat(poz,vel), tip(TipPlatforme::staticna), kretanje(Kretanje::Horizontalno){
 	this->brzina = 0.0f;
 	this->opseg = 0.0f;
 	this->predjenaDistanca = 0.0f;
 	this->smer = 1;
 }
-
+//dinamicna platforma, njen konstruktor
 Platforma::Platforma(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg) : Objekat(poz,vel),tip(TipPlatforme::dinamicna),kretanje(kretanje){
-	this->brzina = 0.0f;
-	this->opseg = 0.0f;
+	this->brzina = brzina;
+	this->opseg = opseg;
 	this->predjenaDistanca = 0.0f;
 	this->smer = 1;
 
@@ -23,7 +23,7 @@ Platforma::Platforma(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float 
 void Platforma::update(float deltaTime) {
 	if (tip == TipPlatforme::staticna) return;
 	float pokret = brzina * smer * deltaTime;
-
+	//std::cout << "brzina: " << brzina << " opseg: " << opseg << " smer: " << smer << " distanca: " << predjenaDistanca << std::endl;
 	if (kretanje == Kretanje::Horizontalno)
 		poz.x += pokret;
 	else
@@ -38,7 +38,7 @@ void Platforma::update(float deltaTime) {
 }
 
 void Platforma::render(Renderer& renderer,vec2 pomeraj) {
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz+pomeraj, vel);
+	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz+pomeraj, vel,vec3(0.5f,0.5f,0.5f));
 }
 
 void Platforma::kolizija(Igrac* igrac) {

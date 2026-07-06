@@ -5,6 +5,7 @@
 class Renderer;
 class Menadzer;
 class InputHendler;
+class Igrac;
 
 class Nivo {
 public:
@@ -21,5 +22,6 @@ private:
 	int visinaProz;
 	Renderer* renderer;
 	Menadzer* resursi;
+	Igrac* igrac;
 	void ucitajKvadrant();
 };

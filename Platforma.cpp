@@ -37,8 +37,8 @@ void Platforma::update(float deltaTime) {
 	}
 }
 
-void Platforma::render(Renderer& renderer,vec2 pomeraj) {
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz+pomeraj, vel,vec3(0.5f,0.5f,0.5f));
+void Platforma::render(Renderer& renderer) {
+	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel,vec3(0.5f,0.5f,0.5f));
 }
 
 void Platforma::kolizija(Igrac* igrac) {

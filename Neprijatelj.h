@@ -13,7 +13,7 @@ public:
 	Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg,bool resetPoz=false);
 
 	void update(float deltaTime) override;
-	void render(Renderer& renderer, vec2 pomeraj) override;
+	void render(Renderer& renderer) override;
 	void kolizija(Igrac* igrac) override;
 private:
 	Kretanje kretanje;

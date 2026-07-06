@@ -22,7 +22,7 @@ public:
 	~Kvadrant();
 	void procesInputa(InputHendler* inputi);
 	void update(float deltaTime);
-	void render(vec2 pomeraj);
+	void render();
 	bool jelPredjen() const;
 	void dodajObjekat(Objekat* objekat);
 	void setujIgraca(Igrac* igrac);

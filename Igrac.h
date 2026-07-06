@@ -11,7 +11,7 @@ public:
 	void procesInputa(InputHendler* inputi);
 
 	void update(float deltaTime) override;  //ovo su mi override metode iz objekat klase
-	void render(Renderer& renderer,vec2 pomeraj) override;
+	void render(Renderer& renderer) override;
 	void kolizija(Igrac* igrac) override {};
 
 	void reset(vec2 pocPozicija);

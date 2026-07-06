@@ -34,9 +34,9 @@ void Kvadrant::update(float deltaTime) {
 	KontrolaIzlazaIzKvadranta(); //il kako god se vec zove ovo
 }
 
-void Kvadrant::render(vec2 pomeraj) {
+void Kvadrant::render() {
 	for (Objekat* objekat : objekti)
-		objekat->render(*renderer, pomeraj);
+		objekat->render(*renderer);
 }
 
 bool Kvadrant::jelPredjen() const {

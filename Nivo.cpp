@@ -193,14 +193,18 @@ void Nivo::ucitajKvadrant() {
 	//!!!DRUGI KVADRANT OBJEKTI!!!:
 	//! 
 	//neprijatelji drugog kvadranta... prvo mravi, pa crvici, pa na kraju veliki brzi mrav
-	Neprijatelj* mrav1 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15 + horpomeraj / 2, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1);
+	Neprijatelj* mrav1 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15 , k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1);
 	k2->dodajObjekat(mrav1);
-	Neprijatelj* mrav2 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15 + horpomeraj / 2, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 3.0f * horpomeraj);
+	Neprijatelj* mrav2 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 3.0f * horpomeraj);
 	k2->dodajObjekat(mrav2);
-	Neprijatelj* mrav3 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15 + horpomeraj / 2, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 6.0f * horpomeraj);
+	Neprijatelj* mrav3 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 6.0f * horpomeraj);
 	k2->dodajObjekat(mrav3);
-	Neprijatelj* mrav4 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15 + horpomeraj / 2, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 9.0f * horpomeraj);
+	Neprijatelj* mrav4 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 9.0f * horpomeraj);
 	k2->dodajObjekat(mrav4);
+
+	Neprijatelj* crvic1 = new Neprijatelj(vec2(k2p.x+horpomeraj*5+horpomeraj*0.25f,k2p.y+verpomeraj*4),vec2(horpomeraj*0.4f,verpomeraj*1.5f),Kretanje::Vertikalno,70.0f,verpomeraj*3.5f,true);
+	k2->dodajObjekat(crvic1);
+
 	//! 
 	//! 
 	//! prvo for loop za zidove i platforme

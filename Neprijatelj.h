@@ -10,7 +10,7 @@ class Renderer;
 
 class Neprijatelj : public Objekat {
 public:
-	Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg,bool resetPoz=false);
+	Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg,bool resetPoz=false, int smer=1,float pocDistanca=0);
 
 	void update(float deltaTime) override;
 	void render(Renderer& renderer) override;
@@ -21,6 +21,7 @@ private:
 	float brzina;
 	float opseg;
 	float predjenaDistanca;
+	float pocDistanca;
 	int smer;
 	vec2 pocPozicija;
 };

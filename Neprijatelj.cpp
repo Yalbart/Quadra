@@ -2,11 +2,11 @@
 #include "Igrac.h"
 #include "Renderer.h"
 
-Neprijatelj::Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg,bool resetPoz) : Objekat(poz,vel), kretanje(kretanje) {
+Neprijatelj::Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg,bool resetPoz,int smer,float pocDistanca) : Objekat(poz,vel), kretanje(kretanje) {
 	this->brzina = brzina;
 	this->opseg = opseg;
-	this->predjenaDistanca = 0.0f;
-	this->smer = 1;
+	this->predjenaDistanca = pocDistanca;
+	this->smer = smer;
 	this->pocPozicija = poz;
 	this->resetPoz = resetPoz;
 }

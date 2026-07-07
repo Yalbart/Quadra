@@ -5,19 +5,21 @@
 #include <iostream>
 
 //staticna platforma , njen konstruktor
-Platforma::Platforma(vec2 poz,vec2 vel): Objekat(poz,vel), tip(TipPlatforme::staticna), kretanje(Kretanje::Horizontalno){
+Platforma::Platforma(vec2 poz,vec2 vel): Objekat(poz,vel), tip(TipPlatforme::staticna), kretanje(Kretanje::Horizontalno), resetPoz(false){
 	this->brzina = 0.0f;
 	this->opseg = 0.0f;
 	this->predjenaDistanca = 0.0f;
 	this->smer = 1;
+	this->pocPoz = poz;
 }
 //dinamicna platforma, njen konstruktor
-Platforma::Platforma(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg) : Objekat(poz,vel),tip(TipPlatforme::dinamicna),kretanje(kretanje){
+Platforma::Platforma(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg,int smer, bool resetPoz) : Objekat(poz,vel),tip(TipPlatforme::dinamicna),kretanje(kretanje){
 	this->brzina = brzina;
 	this->opseg = opseg;
 	this->predjenaDistanca = 0.0f;
-	this->smer = 1;
-
+	this->smer = smer;
+	this->pocPoz = poz;
+	this->resetPoz = resetPoz;
 }
 
 void Platforma::update(float deltaTime) {
@@ -33,7 +35,11 @@ void Platforma::update(float deltaTime) {
 
 	if(predjenaDistanca >= opseg)
 	{
-		predjenaDistanca = 0; smer *= -1;
+		predjenaDistanca = 0;
+		if (resetPoz == true)
+			poz = pocPoz;
+		else
+			smer *= -1;
 	}
 }
 

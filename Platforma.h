@@ -9,7 +9,7 @@ enum class TipPlatforme {
 class Platforma : public Objekat {
 public:
 	Platforma(vec2 poz, vec2 vel);
-	Platforma(vec2 poz, vec2 vel, Kretanje kretanje,float brzina, float opseg);//dodaj kretanje kao zaseban header
+	Platforma(vec2 poz, vec2 vel, Kretanje kretanje,float brzina, float opseg, int smer,bool resetPoz = false);//dodaj kretanje kao zaseban header
 
 	void update(float deltaTime) override;
 	void render(Renderer& renderer) override;
@@ -23,5 +23,7 @@ private:
 	float predjenaDistanca;
 	int smer;
 	bool jelVrhMerdevina = false;
+	bool resetPoz;
+	vec2 pocPoz;
 
 };

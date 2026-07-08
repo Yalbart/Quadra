@@ -84,7 +84,7 @@ void Nivo::ucitajKvadrant() {
 	Kvadrant* k4 = new Kvadrant(renderer, resursi, vec2(0.0f, vk)); //dole levo
 
 	//gore levo pocinje igrac
-	igrac = new Igrac(vec2(k2p.x+horpomeraj, k2p.y+verpomeraj*8), vec2(sk/32.0f, vk/24.0f));
+	igrac = new Igrac(vec2(k2p.x+horpomeraj*14, k2p.y+verpomeraj*6), vec2(sk/32.0f, vk/24.0f));
 	k1->setujIgraca(igrac);
 	k2->setujIgraca(igrac);
 	k3->setujIgraca(igrac);
@@ -182,9 +182,9 @@ void Nivo::ucitajKvadrant() {
 		k1->dodajObjekat(treciRedPlatf2);
 
 		//sir tj. cilj
-		Cilj* cilj1 = new Cilj(vec2(horpomeraj*15+22.0f ,verpomeraj*8+16.0f), vec2(16.0f, 16.0f));
-		k1->dodajObjekat(cilj1);
-		k1->setujCilj(cilj1);
+		Cilj* sir1 = new Cilj(vec2(horpomeraj*15+22.0f ,verpomeraj*8+16.0f), vec2(16.0f, 16.0f));
+		k1->dodajObjekat(sir1);
+		k1->setujCilj(sir1);
 
 	
 	//dodajem igraca na kraju, kako bi se renderovao ispred svega ostalog
@@ -192,19 +192,30 @@ void Nivo::ucitajKvadrant() {
 	  
 	//!!!DRUGI KVADRANT OBJEKTI!!!:
 	//! 
-	//neprijatelji drugog kvadranta... prvo mravi, pa crvici, pa na kraju veliki brzi mrav
-	Neprijatelj* mrav1 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15 , k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1);
-	k2->dodajObjekat(mrav1);
-	Neprijatelj* mrav2 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 3.0f * horpomeraj);
-	k2->dodajObjekat(mrav2);
-	Neprijatelj* mrav3 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 6.0f * horpomeraj);
-	k2->dodajObjekat(mrav3);
-	Neprijatelj* mrav4 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 9.0f * horpomeraj);
-	k2->dodajObjekat(mrav4);
+		//neprijatelji drugog kvadranta... prvo mravi, pa crvici, pa na kraju veliki brzi mrav
+		//njih prvo pravim i dodajem kako bi se prvi renderovali
+		Neprijatelj* mrav1 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15 , k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1);
+		k2->dodajObjekat(mrav1);
+		Neprijatelj* mrav2 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 3.0f * horpomeraj);
+		k2->dodajObjekat(mrav2);
+		Neprijatelj* mrav3 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 6.0f * horpomeraj);
+		k2->dodajObjekat(mrav3);
+		Neprijatelj* mrav4 = new Neprijatelj(vec2(k2p.x + horpomeraj * 15, k2p.y + verpomeraj * 3 + verpomeraj / 2), vec2(horpomeraj / 2, verpomeraj / 2), Kretanje::Horizontalno, 100.0f, horpomeraj * 13, true, -1, 9.0f * horpomeraj);
+		k2->dodajObjekat(mrav4);
 
-	Neprijatelj* crvic1 = new Neprijatelj(vec2(k2p.x+horpomeraj*5+horpomeraj*0.25f,k2p.y+verpomeraj*4),vec2(horpomeraj*0.4f,verpomeraj*1.5f),Kretanje::Vertikalno,70.0f,verpomeraj*3.5f,true);
-	k2->dodajObjekat(crvic1);
+		//crvici
+		for (int i = 5; i < 14; i++) {
+			if (i % 2 == 0)
+				k2->dodajObjekat(new Neprijatelj(vec2(k2p.x + horpomeraj * i + horpomeraj * 0.5f, k2p.y + verpomeraj * 8), vec2(horpomeraj * 0.1f, verpomeraj), Kretanje::Vertikalno, 90.0f, verpomeraj * 3.5f, true, -1));
+			else
+				k2->dodajObjekat(new Neprijatelj(vec2(k2p.x + horpomeraj * i + horpomeraj * 0.33f, k2p.y + verpomeraj * 4 + 5.0f), vec2(horpomeraj * 0.3f, verpomeraj), Kretanje::Vertikalno, 70.0f, verpomeraj * 3.5f-5.0f, true));
+		}
 
+		//brzi ljuti crveni mrav
+		Neprijatelj* crveniMrav = new Neprijatelj(vec2(k2p.x+horpomeraj*14+horpomeraj/8,k2p.y+verpomeraj*10+verpomeraj/2),vec2(horpomeraj/2+horpomeraj/4, verpomeraj / 2), Kretanje::Horizontalno, 433.0f, horpomeraj * 11, false, -1);
+		k2->dodajObjekat(crveniMrav);
+
+	// 
 	//! 
 	//! 
 	//! prvo for loop za zidove i platforme
@@ -218,43 +229,47 @@ void Nivo::ucitajKvadrant() {
 				k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj * i, k2p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
 		}
 	}
-	//popunjavam rupe u zidovima i podu koje nisu obuhvacene u for loopu...
-	k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj, k2p.y + verpomeraj*9), vec2(horpomeraj, verpomeraj)));
-	k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj*2, k2p.y + verpomeraj*9), vec2(horpomeraj, verpomeraj)));
-	k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj * 2, k2p.y + verpomeraj * 3), vec2(horpomeraj, verpomeraj)));
-	k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj * 2, k2p.y + verpomeraj * 6), vec2(horpomeraj, verpomeraj)));
+		//popunjavam rupe u zidovima i podu koje nisu obuhvacene u for loopu...
+		k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj, k2p.y + verpomeraj*9), vec2(horpomeraj, verpomeraj)));
+		k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj*2, k2p.y + verpomeraj*9), vec2(horpomeraj, verpomeraj)));
+		k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj * 2, k2p.y + verpomeraj * 3), vec2(horpomeraj, verpomeraj)));
+		k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj * 2, k2p.y + verpomeraj * 6), vec2(horpomeraj, verpomeraj)));
 
-	//pomerajuca platforma/lift na pocetku kvadranta
-	k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj, k2p.y + verpomeraj * 9),vec2(horpomeraj,verpomeraj*0.5f),Kretanje::Vertikalno,100.0f,verpomeraj*7+verpomeraj/2,-1,true));
+		//pomerajuca platforma/lift na pocetku kvadranta
+		k2->dodajObjekat(new Platforma(vec2(k2p.x + horpomeraj, k2p.y + verpomeraj * 9),vec2(horpomeraj,verpomeraj*0.5f),Kretanje::Vertikalno,100.0f,verpomeraj*7+verpomeraj/2,-1,true));
 
-	//merdevine u redu br j==7
-	k2->dodajObjekat(new Merdevine(vec2(k2p.x + horpomeraj * 14 + 5.0f, k2p.y + verpomeraj * 7), vec2(sk / 20.0f, vk / 6.0f)));
+		//merdevine u redu br j==7
+		k2->dodajObjekat(new Merdevine(vec2(k2p.x + horpomeraj * 14 + 5.0f, k2p.y + verpomeraj * 7), vec2(sk / 20.0f, vk / 6.0f)));
 	
-	//merdevine i njihove platforme u redu 10
-	Platforma* prveMerdevPlatf = new Platforma(vec2(k2p.x + horpomeraj * 14,k2p.y+ verpomeraj * 10), vec2(horpomeraj, vk / 32.0f));
-	prveMerdevPlatf->vrhMerdevina(true);
-	Merdevine* prveMerdev2k = new Merdevine(vec2(k2p.x+ horpomeraj * 14 + 5.0f,k2p.y+ verpomeraj * 10), vec2(sk / 20.0f, verpomeraj));
+		//merdevine i njihove platforme u redu 10
+		Platforma* prveMerdevPlatf = new Platforma(vec2(k2p.x + horpomeraj * 14,k2p.y+ verpomeraj * 10), vec2(horpomeraj, vk / 32.0f));
+		prveMerdevPlatf->vrhMerdevina(true);
+		Merdevine* prveMerdev2k = new Merdevine(vec2(k2p.x+ horpomeraj * 14 + 5.0f,k2p.y+ verpomeraj * 10), vec2(sk / 20.0f, verpomeraj));
 	
-	Platforma* drugeMerdevPlatf = new Platforma(vec2(k2p.x + horpomeraj * 10, k2p.y + verpomeraj * 10), vec2(horpomeraj, vk / 32.0f));
-	drugeMerdevPlatf->vrhMerdevina(true);
-	Merdevine* drugeMerdev2k = new Merdevine(vec2(k2p.x + horpomeraj * 10 + 5.0f, k2p.y + verpomeraj * 10), vec2(sk / 20.0f, verpomeraj));
+		Platforma* drugeMerdevPlatf = new Platforma(vec2(k2p.x + horpomeraj * 10, k2p.y + verpomeraj * 10), vec2(horpomeraj, vk / 32.0f));
+		drugeMerdevPlatf->vrhMerdevina(true);
+		Merdevine* drugeMerdev2k = new Merdevine(vec2(k2p.x + horpomeraj * 10 + 5.0f, k2p.y + verpomeraj * 10), vec2(sk / 20.0f, verpomeraj));
 
-	Platforma* treceMerdevPlatf = new Platforma(vec2(k2p.x + horpomeraj * 6, k2p.y + verpomeraj * 10), vec2(horpomeraj, vk / 32.0f));
-	treceMerdevPlatf->vrhMerdevina(true);
-	Merdevine* treceMerdev2k = new Merdevine(vec2(k2p.x + horpomeraj * 6 + 5.0f, k2p.y + verpomeraj * 10), vec2(sk / 20.0f, verpomeraj));
+		Platforma* treceMerdevPlatf = new Platforma(vec2(k2p.x + horpomeraj * 6, k2p.y + verpomeraj * 10), vec2(horpomeraj, vk / 32.0f));
+		treceMerdevPlatf->vrhMerdevina(true);
+		Merdevine* treceMerdev2k = new Merdevine(vec2(k2p.x + horpomeraj * 6 + 5.0f, k2p.y + verpomeraj * 10), vec2(sk / 20.0f, verpomeraj));
 
 	
 
-	//prvo dodajem merdevine...
-	k2->dodajObjekat(prveMerdev2k);
-	k2->dodajObjekat(drugeMerdev2k);
-	k2->dodajObjekat(treceMerdev2k);
+		//prvo dodajem merdevine...
+		k2->dodajObjekat(prveMerdev2k);
+		k2->dodajObjekat(drugeMerdev2k);
+		k2->dodajObjekat(treceMerdev2k);
 
-	//pa onda i platforme
-	k2->dodajObjekat(prveMerdevPlatf);
-	k2->dodajObjekat(drugeMerdevPlatf);
-	k2->dodajObjekat(treceMerdevPlatf);
+		//pa onda i platforme
+		k2->dodajObjekat(prveMerdevPlatf);
+		k2->dodajObjekat(drugeMerdevPlatf);
+		k2->dodajObjekat(treceMerdevPlatf);
 
+		//cilj/sir drugi kvadrant
+		Cilj* sir2 = new Cilj(vec2(k2p.x + horpomeraj * 2 +22.0f, k2p.y + verpomeraj * 10+16.0f),vec2(16.0f,16.0f));
+		k2->dodajObjekat(sir2);
+		k2->setujCilj(sir2);
 
 	//KONACNO DODAVANJE KVADRANTA NA NIVO
 	kvadranti.push_back(k1);

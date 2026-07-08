@@ -84,7 +84,7 @@ void Nivo::ucitajKvadrant() {
 	Kvadrant* k4 = new Kvadrant(renderer, resursi, vec2(0.0f, vk)); //dole levo
 
 	//gore levo pocinje igrac
-	igrac = new Igrac(vec2(k2p.x+horpomeraj*14, k2p.y+verpomeraj*6), vec2(sk/32.0f, vk/24.0f));
+	igrac = new Igrac(vec2(k3p.x+horpomeraj*14, k3p.y+verpomeraj*10), vec2(sk/32.0f, vk/24.0f));
 	k1->setujIgraca(igrac);
 	k2->setujIgraca(igrac);
 	k3->setujIgraca(igrac);
@@ -270,6 +270,65 @@ void Nivo::ucitajKvadrant() {
 		Cilj* sir2 = new Cilj(vec2(k2p.x + horpomeraj * 2 +22.0f, k2p.y + verpomeraj * 10+16.0f),vec2(16.0f,16.0f));
 		k2->dodajObjekat(sir2);
 		k2->setujCilj(sir2);
+
+	//!!!TRECI KVADRANT OBJEKTI!!!
+	//! 
+	//! 
+		//sada vec standardni for loop za platforme/zidove...
+		for (int i = 0; i < 16; i++) {
+			for (int j = 0; j < 12; j++) {
+				if (j==0 && i!=1 || j==1 || j==11)
+					k3->dodajObjekat(new Platforma(vec2(k3p.x + horpomeraj * i, k3p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+				if ((i==0||i==15) && j>2 && j<11)
+					k3->dodajObjekat(new Platforma(vec2(k3p.x + horpomeraj * i, k3p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+				if ((i == 4 || i == 9) && j>1 && j<10)
+					k3->dodajObjekat(new Platforma(vec2(k3p.x + horpomeraj * i+horpomeraj/4, k3p.y + verpomeraj * j), vec2(horpomeraj/2, verpomeraj)));
+				if((j==9 || j==10)&&(i==6 || i==7 || i== 11 || i==13))
+					k3->dodajObjekat(new Platforma(vec2(k3p.x + horpomeraj * i, k3p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+
+				//stalagmiti... kao neprijatelji!
+				if ((j == 9 && (i == 1 || i == 2 || i == 12)) || (j==7 && (i==6 || i==7 || i==11 || i==13)))
+					k3->dodajObjekat(new Neprijatelj(vec2(k3p.x + horpomeraj * i+horpomeraj/8, k3p.y + verpomeraj * j),vec2(horpomeraj/2+horpomeraj/4,verpomeraj*2.0f),Kretanje::Horizontalno,0.0f,0.0f));
+				
+				//a gde su stalagmiti, tu su i stalaktiti! (OPASNOST! OTROVNE KAPLJICE!)
+				if (j == 2 && (i == 2 || i == 11 || i == 13)) {
+					k3->dodajObjekat(new Neprijatelj(vec2(k3p.x + horpomeraj * i + horpomeraj / 8, k3p.y + verpomeraj * j), vec2(horpomeraj / 2 + horpomeraj / 4, verpomeraj * 2.0f), Kretanje::Horizontalno, 0.0f, 0.0f));
+					if(i!=2)
+						k3->dodajObjekat(new Neprijatelj(vec2(k3p.x + horpomeraj * i + horpomeraj / 2 -6.0f, k3p.y + verpomeraj*4), vec2(12.0f, 12.0f), Kretanje::Vertikalno,70.0f,4*verpomeraj,true));
+
+				}
+
+				//merdevine...
+				if ((i == 5 || i == 12) && j == 4)
+					k3->dodajObjekat(new Merdevine(vec2(k3p.x + horpomeraj * i +5.0f, k3p.y + verpomeraj * j), vec2(sk / 20.0f, verpomeraj * 3)));
+				if(j==4 && (i==3 || i==8 || i==10 || i==14))
+					k3->dodajObjekat(new Merdevine(vec2(k3p.x + horpomeraj * i + 5.0f, k3p.y + verpomeraj * j), vec2(sk / 20.0f, verpomeraj * 7)));
+				Merdevine* merdevKraj3k = new Merdevine(vec2(k3p.x + horpomeraj + 5.0f, k3p.y + verpomeraj * 2), vec2(sk / 20.0f, verpomeraj * 7));
+				k3->dodajObjekat(merdevKraj3k);
+			}
+
+			//neprijatelji 3. kvadranta, slepi misevi! Ovi piju krv!
+			Neprijatelj* velikiSismis1 = new Neprijatelj(vec2(k3p.x+horpomeraj*6+5.0f,k3p.y+verpomeraj*2),vec2(horpomeraj-10.0f,verpomeraj-25.0f),Kretanje::Vertikalno,70.0f,4*verpomeraj+25.0f,false);
+			Neprijatelj* velikiSismis2 = new Neprijatelj(vec2(k3p.x + horpomeraj * 7 + 5.0f, k3p.y + verpomeraj * 6 +25.0f), vec2(horpomeraj - 10.0f, verpomeraj - 25.0f), Kretanje::Vertikalno, 70.0f, 4 * verpomeraj+25.0f, false, -1);
+			k3->dodajObjekat(velikiSismis1);
+			k3->dodajObjekat(velikiSismis2);
+			Neprijatelj* brziSismis1 = new Neprijatelj(vec2(k3p.x+horpomeraj+horpomeraj*0.25f,k3p.y+verpomeraj*2),vec2(horpomeraj/2,verpomeraj*0.66f),Kretanje::Vertikalno,150.0f,6*verpomeraj,false);
+			Neprijatelj* brziSismis2 = new Neprijatelj(vec2(k3p.x + horpomeraj*3 + horpomeraj * 0.25f, k3p.y + verpomeraj * 8), vec2(horpomeraj / 2, verpomeraj * 0.66f), Kretanje::Vertikalno, 150.0f, 6 * verpomeraj, false,-1);
+			k3->dodajObjekat(brziSismis1);
+			k3->dodajObjekat(brziSismis2);
+
+			//dopuna jedne rupe u zidu skroz desno i jedne male merdevinice za game balans..
+			k3->dodajObjekat(new Platforma(vec2(k3p.x + horpomeraj * 15, k3p.y + verpomeraj * 2), vec2(horpomeraj, verpomeraj)));
+			k3->dodajObjekat(new Merdevine(vec2(k3p.x + horpomeraj * 8 + 5.0f, k3p.y + verpomeraj * 3), vec2(sk / 20.0f, verpomeraj)));
+
+			//i za kraj sir treceg kvadranta.. bravo ako ste stigli dovde!
+			Cilj* sir3 = new Cilj(vec2(k3p.x + 22.0f, k3p.y + verpomeraj * 2 + 16.0f), vec2(16.0f, 16.0f));
+			k2->dodajObjekat(sir3);
+			k2->setujCilj(sir3);
+
+		}
+
+
 
 	//KONACNO DODAVANJE KVADRANTA NA NIVO
 	kvadranti.push_back(k1);

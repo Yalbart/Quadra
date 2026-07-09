@@ -144,6 +144,7 @@
     <ClCompile Include="Nivo.cpp" />
     <ClCompile Include="Objekat.cpp" />
     <ClCompile Include="Platforma.cpp" />
+    <ClCompile Include="Portal.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TMQuadro.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Nivo.h" />
     <ClInclude Include="Objekat.h" />
     <ClInclude Include="Platforma.h" />
+    <ClInclude Include="Portal.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>

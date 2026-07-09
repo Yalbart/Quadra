@@ -8,6 +8,7 @@
 #include "Platforma.h"
 #include "Neprijatelj.h"
 #include "Kretanje.h"
+#include "Portal.h"
 
 Nivo::Nivo(Renderer* renderer, Menadzer* resursi,int sirinaProz,int visinaProz ): igrac(nullptr) {
 	this->renderer = renderer;
@@ -84,7 +85,7 @@ void Nivo::ucitajKvadrant() {
 	Kvadrant* k4 = new Kvadrant(renderer, resursi, vec2(0.0f, vk)); //dole levo
 
 	//gore levo pocinje igrac
-	igrac = new Igrac(vec2(k3p.x+horpomeraj*14, k3p.y+verpomeraj*10), vec2(sk/32.0f, vk/24.0f));
+	igrac = new Igrac(vec2(k2p.x+horpomeraj*2, k2p.y+verpomeraj*10), vec2(sk/32.0f, vk/24.0f));
 	k1->setujIgraca(igrac);
 	k2->setujIgraca(igrac);
 	k3->setujIgraca(igrac);
@@ -265,6 +266,10 @@ void Nivo::ucitajKvadrant() {
 		k2->dodajObjekat(prveMerdevPlatf);
 		k2->dodajObjekat(drugeMerdevPlatf);
 		k2->dodajObjekat(treceMerdevPlatf);
+
+		//portal/cevka za kraj drugog i pocetak treceg kvadranta!
+		Portal* portal1 = new Portal(vec2(k2p.x+horpomeraj,k2p.y+verpomeraj*11+verpomeraj*0.66f),vec2(horpomeraj,verpomeraj/3.0f),vec2(k3p.x+horpomeraj*14+horpomeraj/4.0f,k3p.y+verpomeraj*10));
+		k2->dodajObjekat(portal1);
 
 		//cilj/sir drugi kvadrant
 		Cilj* sir2 = new Cilj(vec2(k2p.x + horpomeraj * 2 +22.0f, k2p.y + verpomeraj * 10+16.0f),vec2(16.0f,16.0f));

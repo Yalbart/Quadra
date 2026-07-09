@@ -330,6 +330,35 @@ void Nivo::ucitajKvadrant() {
 
 
 
+	//!!!CETVRTI KVADRANT OBJEKTI!!!:
+		//! 
+		//zidovi... samo cele platforme, znaci velicine horpomerajxverpomeraj, vredi naglasiti jer imam poluplatforme u ovom kvadrantu
+
+		for(int i=0;i<16;i++)
+			for (int j = 0; j < 12; j++) {
+				if (i == 0 && j > 4 || i>0 && j==11)
+					k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * i, k4p.y + verpomeraj * j), vec2(horpomeraj,verpomeraj)));
+				if(j==0 && (i<3 || i>10))
+					k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * i, k4p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+				if(j==2 && (i<3 || i==11))
+					k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * i, k4p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+				if(j==4 && i!=6 && i!=11)
+					k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * i, k4p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+				if(j==9 && i>0 && i<8)
+					k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * i, k4p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+				if(j== 8 && i>4 && i<8)
+					k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * i, k4p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+				if((j==6 || j==7) && (i==2 || i==3))
+					k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * i, k4p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+				if(i==9 && (j==5 || j==8 || j==9))
+					k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * i, k4p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
+
+			}
+			//popunjavam rupe, tacnije 2 pune u 2. redu
+			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 2, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
+			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 11, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
+
+
 	//KONACNO DODAVANJE KVADRANTA NA NIVO
 	kvadranti.push_back(k1);
 	kvadranti.push_back(k2);

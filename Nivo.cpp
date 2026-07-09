@@ -360,9 +360,28 @@ void Nivo::ucitajKvadrant() {
 
 			}
 			//popunjavam rupe, tacnije 2 pune u 2. redu
-			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 2, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
-			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 11, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
+			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 2.0f, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
+			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 11.0f, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
 
+			//poluplatforme, izgledace kao cevi
+			//prvo dve najtanje na vrhu..
+			Platforma* cevTanka1 = new Platforma(vec2(k4p.x+horpomeraj*4.0f,k4p.y+verpomeraj),vec2(horpomeraj*6.0f,verpomeraj/4.0f));
+			Platforma* cevTanka2 = new Platforma(vec2(k4p.x + horpomeraj * 3.0f, k4p.y + verpomeraj*2.0f + verpomeraj *0.75f), vec2(horpomeraj * 6.0f, verpomeraj / 4.0f));
+			k4->dodajObjekat(cevTanka1);
+			k4->dodajObjekat(cevTanka2);
+			//pa onda jedna malo nize..
+			Platforma* cevTanka3 = new Platforma(vec2(k4p.x + horpomeraj * 4.0f, k4p.y + verpomeraj * 7.0f - verpomeraj/8.0f), vec2(horpomeraj * 6.0f, verpomeraj / 4.0f));
+			k4->dodajObjekat(cevTanka3);
+			//pa jedna kraca i deblja izmedju njih..
+			Platforma* cevSrednja = new Platforma(vec2(k4p.x + horpomeraj * 5.0f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj * 3.0f, verpomeraj / 2.0f));
+			k4->dodajObjekat(cevSrednja);
+			//i tri vertikalne..
+			Platforma* cevVert1 = new Platforma(vec2(k4p.x + horpomeraj * 10.0f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj / 2.0f, verpomeraj * 6.0f));
+			Platforma* cevVert2 = new Platforma(vec2(k4p.x + horpomeraj * 12.0f+horpomeraj*0.375f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj / 4.0f, verpomeraj * 6.0f));
+			Platforma* cevVert3 = new Platforma(vec2(k4p.x + horpomeraj * 14.0f+ horpomeraj * 0.375f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj / 4.0f, verpomeraj * 6.0f));
+			k4->dodajObjekat(cevVert1);
+			k4->dodajObjekat(cevVert2);
+			k4->dodajObjekat(cevVert3);
 
 	//KONACNO DODAVANJE KVADRANTA NA NIVO
 	kvadranti.push_back(k1);

@@ -85,7 +85,7 @@ void Nivo::ucitajKvadrant() {
 	Kvadrant* k4 = new Kvadrant(renderer, resursi, vec2(0.0f, vk)); //dole levo
 
 	//gore levo pocinje igrac
-	igrac = new Igrac(vec2(k2p.x+horpomeraj*2, k2p.y+verpomeraj*10), vec2(sk/32.0f, vk/24.0f));
+	igrac = new Igrac(vec2(k3p.x+horpomeraj*3.0f, k3p.y+verpomeraj*10.0f), vec2(sk/32.0f, vk/24.0f));
 	k1->setujIgraca(igrac);
 	k2->setujIgraca(igrac);
 	k3->setujIgraca(igrac);
@@ -363,6 +363,9 @@ void Nivo::ucitajKvadrant() {
 			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 2.0f, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
 			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 11.0f, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
 
+			//jedna tanja platforma kod ulaza..
+			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 15.0f, k4p.y + verpomeraj * 3.0f), vec2(horpomeraj, verpomeraj / 3.0f)));
+
 			//poluplatforme, izgledace kao cevi
 			//prvo dve najtanje na vrhu..
 			Platforma* cevTanka1 = new Platforma(vec2(k4p.x+horpomeraj*4.0f,k4p.y+verpomeraj),vec2(horpomeraj*6.0f,verpomeraj/4.0f));
@@ -382,6 +385,59 @@ void Nivo::ucitajKvadrant() {
 			k4->dodajObjekat(cevVert1);
 			k4->dodajObjekat(cevVert2);
 			k4->dodajObjekat(cevVert3);
+
+			//e sad merdevine koje ce izgledati kao kanapi..
+			//prvo najduzi kanapi, desno gde su vertikalne cevi
+			Merdevine* dugiKanap1 = new Merdevine(vec2(k4p.x+horpomeraj*11.0f+horpomeraj*0.375f,k4p.y+verpomeraj*5.0f),vec2(horpomeraj/4.0f,verpomeraj*6.0f));
+			Merdevine* dugiKanap2 = new Merdevine(vec2(k4p.x + horpomeraj * 13.0f + horpomeraj * 0.375f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj / 4.0f, verpomeraj * 6.0f));
+			Merdevine* dugiKanap3 = new Merdevine(vec2(k4p.x + horpomeraj * 15.0f + horpomeraj * 0.375f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj / 4.0f, verpomeraj * 6.0f));
+			k4->dodajObjekat(dugiKanap1);
+			k4->dodajObjekat(dugiKanap2);
+			k4->dodajObjekat(dugiKanap3);
+
+			//pa 2 kanapa srednje duzine
+			Merdevine* srednjiKanap1 = new Merdevine(vec2(k4p.x+horpomeraj+horpomeraj*0.375f,k4p.y+verpomeraj*5.0f),vec2(horpomeraj/4.0f,verpomeraj*4.0f));
+			Merdevine* srednjiKanap2 = new Merdevine(vec2(k4p.x + horpomeraj*8.0f + horpomeraj * 0.375f, k4p.y + verpomeraj * 7.0f+verpomeraj/8.0f), vec2(horpomeraj / 4.0f, verpomeraj * 4.0f-verpomeraj/8.0f));
+			k4->dodajObjekat(srednjiKanap1);
+			k4->dodajObjekat(srednjiKanap2);
+
+			//i za kraj mali kanapcici od vrha ka dole
+			Merdevine* maliKanap1 = new Merdevine(vec2(k4p.x+horpomeraj*7.0f,k4p.y),vec2(horpomeraj/4.0f,verpomeraj));
+			Merdevine* maliKanap2 = new Merdevine(vec2(k4p.x + horpomeraj * 7.0f, k4p.y+verpomeraj+verpomeraj/4.0f), vec2(horpomeraj / 4.0f, verpomeraj+verpomeraj/8.0f));
+			Merdevine* maliKanap3 = new Merdevine(vec2(k4p.x + horpomeraj * 12.0f, k4p.y+verpomeraj), vec2(horpomeraj / 4.0f, verpomeraj*2.0f-verpomeraj/8.0f));
+			Merdevine* maliKanap4 = new Merdevine(vec2(k4p.x + horpomeraj * 8.0f, k4p.y+verpomeraj*5.0f), vec2(horpomeraj / 4.0f, verpomeraj*2.0f-verpomeraj/8.0f));
+			Merdevine* maliKanap5 = new Merdevine(vec2(k4p.x + horpomeraj * 4.0f, k4p.y + verpomeraj*5.0f), vec2(horpomeraj / 4.0f, verpomeraj * 2.0f - verpomeraj / 8.0f));
+			Merdevine* maliKanap6 = new Merdevine(vec2(k4p.x + horpomeraj * 4.0f, k4p.y + verpomeraj*7.0f), vec2(horpomeraj / 4.0f, verpomeraj * 2.0f - verpomeraj / 8.0f));
+
+
+			k4->dodajObjekat(maliKanap1);
+			k4->dodajObjekat(maliKanap2);
+			k4->dodajObjekat(maliKanap3);
+			k4->dodajObjekat(maliKanap4);
+			k4->dodajObjekat(maliKanap5);
+			k4->dodajObjekat(maliKanap6);
+
+			//I ZA KRAJ PORTALIII! IMA IH SVEGA 7!!! Zovem ih cevka ovde jer ce izgledati kao da igrac udje u cevku i izadje na drugu
+			Portal* cevka1 = new Portal(vec2(k4p.x+horpomeraj*15.0f,k4p.y+verpomeraj*2.0f),vec2(horpomeraj/4.0f,verpomeraj),vec2(k4p.x+horpomeraj*12.0f+horpomeraj/4.0f, k4p.y+verpomeraj+verpomeraj/4.0f));
+			Portal* cevka2 = new Portal(vec2(k4p.x + horpomeraj * 11.0f, k4p.y + verpomeraj * 4.0f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+horpomeraj * 11.0f + horpomeraj / 4.0f, k4p.y+verpomeraj*5.0f + verpomeraj / 4.0f));
+			Portal* cevka3 = new Portal(vec2(k4p.x + horpomeraj * 11.0f, k4p.y + verpomeraj * 10.0f + verpomeraj*0.75f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+horpomeraj * 15.0f + horpomeraj / 4.0f, k4p.y+verpomeraj * 10.0f - verpomeraj / 4.0f));
+			Portal* cevka4 = new Portal(vec2(k4p.x + horpomeraj * 15.0f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+ horpomeraj * 13.0f + horpomeraj / 4.0f, k4p.y+ verpomeraj *5.0f + verpomeraj / 4.0f));
+			Portal* cevka5 = new Portal(vec2(k4p.x + horpomeraj * 13.0f, k4p.y + verpomeraj * 10.0f + verpomeraj*0.75f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+ horpomeraj * 9.0f - horpomeraj / 4.0f, k4p.y+ verpomeraj / 4.0f));
+			Portal* cevka6 = new Portal(vec2(k4p.x + horpomeraj * 6.0f, k4p.y + verpomeraj * 4.0f+verpomeraj*0.75f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+ horpomeraj + horpomeraj / 4.0f, k4p.y+ verpomeraj*10.0f + verpomeraj / 4.0f));
+			Portal* cevka7 = new Portal(vec2(k4p.x + horpomeraj * 8.0f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x +horpomeraj + horpomeraj / 4.0f, k4p.y+ verpomeraj + verpomeraj / 4.0f));
+
+			k4->dodajObjekat(cevka1);
+			k4->dodajObjekat(cevka2);
+			k4->dodajObjekat(cevka3);
+			k4->dodajObjekat(cevka4);
+			k4->dodajObjekat(cevka5);
+			k4->dodajObjekat(cevka6);
+			k4->dodajObjekat(cevka7);
+
+			//POSLEDNJI sir!!! Najbolje za kraj!
+			Cilj* sir4 = new Cilj(vec2(k4p.x+22.0f,k4p.y+verpomeraj+16.0f),vec2(16.0f,16.0f));
+			k4->dodajObjekat(sir4);
+			k4->setujCilj(sir4);
 
 	//KONACNO DODAVANJE KVADRANTA NA NIVO
 	kvadranti.push_back(k1);

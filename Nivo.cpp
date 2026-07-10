@@ -85,7 +85,7 @@ void Nivo::ucitajKvadrant() {
 	Kvadrant* k4 = new Kvadrant(renderer, resursi, vec2(0.0f, vk)); //dole levo
 
 	//gore levo pocinje igrac
-	igrac = new Igrac(vec2(k3p.x+horpomeraj*3.0f, k3p.y+verpomeraj*10.0f), vec2(sk/32.0f, vk/24.0f));
+	igrac = new Igrac(vec2(k4p.x+horpomeraj*8.0f, k4p.y+verpomeraj*1.0f), vec2(sk/32.0f, vk/24.0f));
 	k1->setujIgraca(igrac);
 	k2->setujIgraca(igrac);
 	k3->setujIgraca(igrac);
@@ -368,8 +368,8 @@ void Nivo::ucitajKvadrant() {
 
 			//poluplatforme, izgledace kao cevi
 			//prvo dve najtanje na vrhu..
-			Platforma* cevTanka1 = new Platforma(vec2(k4p.x+horpomeraj*4.0f,k4p.y+verpomeraj),vec2(horpomeraj*6.0f,verpomeraj/4.0f));
-			Platforma* cevTanka2 = new Platforma(vec2(k4p.x + horpomeraj * 3.0f, k4p.y + verpomeraj*2.0f + verpomeraj *0.75f), vec2(horpomeraj * 6.0f, verpomeraj / 4.0f));
+			Platforma* cevTanka1 = new Platforma(vec2(k4p.x+horpomeraj*4.0f,k4p.y+verpomeraj),vec2(horpomeraj*5.0f,verpomeraj/4.0f));
+			Platforma* cevTanka2 = new Platforma(vec2(k4p.x + horpomeraj * 3.0f, k4p.y + verpomeraj*2.0f + verpomeraj *0.75f), vec2(horpomeraj * 5.0f, verpomeraj / 4.0f));
 			k4->dodajObjekat(cevTanka1);
 			k4->dodajObjekat(cevTanka2);
 			//pa onda jedna malo nize..
@@ -433,6 +433,22 @@ void Nivo::ucitajKvadrant() {
 			k4->dodajObjekat(cevka5);
 			k4->dodajObjekat(cevka6);
 			k4->dodajObjekat(cevka7);
+
+			//NEPRIJATELJI 4. kvadranta
+			//prvo dva mala krokodilcica, ili aligatora?
+			Neprijatelj* krokodilcic1 = new Neprijatelj(vec2(k4p.x+horpomeraj*4.0f,k4p.y+verpomeraj*6.0f+verpomeraj/4.0f),vec2(horpomeraj-horpomeraj/8.0f,verpomeraj/2.0f),Kretanje::Horizontalno,100.0f,5.0f*horpomeraj);
+			Neprijatelj* krokodilcic2 = new Neprijatelj(vec2(k4p.x + horpomeraj * 4.0f, k4p.y + verpomeraj * 10.0f + verpomeraj / 2.0f), vec2(horpomeraj-horpomeraj/8.0f, verpomeraj / 2.0f), Kretanje::Horizontalno, 100.0f, 5.0f * horpomeraj);
+			k4->dodajObjekat(krokodilcic1);
+			k4->dodajObjekat(krokodilcic2);
+
+			//pa krokodili/aligatori 3. reda
+			Neprijatelj* krokodilVeliki1 = new Neprijatelj(vec2(k4p.x,k4p.y+verpomeraj*3.0f+verpomeraj*0.25f), vec2(horpomeraj*1.0f,verpomeraj*0.75f),Kretanje::Horizontalno,90.0f,14.0f*horpomeraj,true);
+			Neprijatelj* krokodilVeliki2 = new Neprijatelj(vec2(k4p.x, k4p.y + verpomeraj * 3.0f + verpomeraj * 0.25f), vec2(horpomeraj * 1.0f, verpomeraj * 0.75f), Kretanje::Horizontalno, 90.0f, 14.0f * horpomeraj, true,1,horpomeraj*5.0f);
+			Neprijatelj* krokodilVeliki3 = new Neprijatelj(vec2(k4p.x, k4p.y + verpomeraj * 3.0f + verpomeraj * 0.25f), vec2(horpomeraj * 1.0f, verpomeraj * 0.75f), Kretanje::Horizontalno, 90.0f, 14.0f * horpomeraj, true,1,horpomeraj*10.0f);
+			k4->dodajObjekat(krokodilVeliki1);
+			k4->dodajObjekat(krokodilVeliki2);
+			k4->dodajObjekat(krokodilVeliki3);
+
 
 			//POSLEDNJI sir!!! Najbolje za kraj!
 			Cilj* sir4 = new Cilj(vec2(k4p.x+22.0f,k4p.y+verpomeraj+16.0f),vec2(16.0f,16.0f));

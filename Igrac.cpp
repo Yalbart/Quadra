@@ -5,7 +5,7 @@
 #include <iostream>
 
 //staticne i konstantne vrednosti i ako zelim da ih podesim podesicu ih ovde u samoj klasi
-const float Igrac::brzinaPenjanja = 60;
+const float Igrac::brzinaPenjanja = 80;
 const float Igrac::brzinaKretanja = 150;
 const float Igrac::gravitacija = 300;
 

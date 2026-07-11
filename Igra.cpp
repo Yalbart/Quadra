@@ -55,7 +55,7 @@ void Igra::napraviProzor(int argc, char** argv) {
 	visinaProz = glutGet(GLUT_SCREEN_HEIGHT);
 	glutInitWindowSize(sirinaProz, visinaProz);
 	glutCreateWindow("TMQuadro");
-	glutFullScreen();
+	//glutFullScreen();
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
 	GLenum glew = glewInit();

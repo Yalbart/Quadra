@@ -449,6 +449,21 @@ void Nivo::ucitajKvadrant() {
 			k4->dodajObjekat(krokodilVeliki2);
 			k4->dodajObjekat(krokodilVeliki3);
 
+			//zmijice oko tankih vertikalnih cevi i njihov otrov
+			Neprijatelj* zmijicaGlava1	=	new Neprijatelj(vec2(k4p.x+horpomeraj*10.0f+horpomeraj/2.0f,k4p.y+verpomeraj*7.0f+verpomeraj/2.0f), vec2(horpomeraj/5.0f,verpomeraj/3.0f),Kretanje::Horizontalno,0.0f,0.0f);
+			Neprijatelj* zmijicaGlava3	=	new Neprijatelj(vec2(k4p.x + horpomeraj * 10.0f + horpomeraj / 2.0f, k4p.y + verpomeraj * 9.0f + verpomeraj / 2.0f), vec2(horpomeraj / 5.0f, verpomeraj / 3.0f), Kretanje::Horizontalno, 0.0f, 0.0f);
+			Neprijatelj* zmijicaGlava2	=	new Neprijatelj(vec2(k4p.x + horpomeraj * 12.0f +horpomeraj*0.25f, k4p.y + verpomeraj * 8.0f + verpomeraj / 2.0f), vec2(horpomeraj / 5.0f, verpomeraj / 3.0f), Kretanje::Horizontalno, 0.0f, 0.0f);
+			k4->dodajObjekat(zmijicaGlava1);
+			k4->dodajObjekat(zmijicaGlava2);
+			k4->dodajObjekat(zmijicaGlava3);
+			Neprijatelj* otrovPljuca1 = new Neprijatelj(vec2(k4p.x + horpomeraj * 10.0f + horpomeraj / 2.0f, k4p.y + verpomeraj * 7.0f + verpomeraj / 2.0f),vec2(horpomeraj/5.0f,verpomeraj/6.0f),Kretanje::Horizontalno,90.0f,horpomeraj*1.875f,true,1);
+			Neprijatelj* otrovPljuca2 = new Neprijatelj(vec2(k4p.x + horpomeraj * 12.0f + horpomeraj * 0.25f, k4p.y + verpomeraj * 8.0f + verpomeraj / 2.0f), vec2(horpomeraj / 5.0f, verpomeraj / 6.0f), Kretanje::Horizontalno, 90.0f, horpomeraj * 1.875f, true, -1);
+			Neprijatelj* otrovPljuca3 = new Neprijatelj(vec2(k4p.x + horpomeraj * 10.0f + horpomeraj / 2.0f, k4p.y + verpomeraj * 9.0f + verpomeraj / 2.0f), vec2(horpomeraj / 5.0f, verpomeraj / 6.0f), Kretanje::Horizontalno, 90.0f, horpomeraj * 1.875f, true, 1);
+			k4->dodajObjekat(otrovPljuca1);
+			k4->dodajObjekat(otrovPljuca2);
+			k4->dodajObjekat(otrovPljuca3);
+
+
 
 			//POSLEDNJI sir!!! Najbolje za kraj!
 			Cilj* sir4 = new Cilj(vec2(k4p.x+22.0f,k4p.y+verpomeraj+16.0f),vec2(16.0f,16.0f));

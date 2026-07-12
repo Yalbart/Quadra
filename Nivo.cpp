@@ -359,17 +359,18 @@ void Nivo::ucitajKvadrant() {
 					k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * i, k4p.y + verpomeraj * j), vec2(horpomeraj, verpomeraj)));
 
 			}
-			//popunjavam rupe, tacnije 2 pune u 2. redu
+			//popunjavam rupe, tacnije 2 pune u 2. redu i jos jedna skroz gore
 			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 2.0f, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
 			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 11.0f, k4p.y + verpomeraj), vec2(horpomeraj, verpomeraj)));
+			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 10, k4p.y), vec2(horpomeraj, verpomeraj)));
 
 			//jedna tanja platforma kod ulaza..
 			k4->dodajObjekat(new Platforma(vec2(k4p.x + horpomeraj * 15.0f, k4p.y + verpomeraj * 3.0f), vec2(horpomeraj, verpomeraj / 3.0f)));
 
 			//poluplatforme, izgledace kao cevi
 			//prvo dve najtanje na vrhu..
-			Platforma* cevTanka1 = new Platforma(vec2(k4p.x+horpomeraj*4.0f,k4p.y+verpomeraj),vec2(horpomeraj*5.0f,verpomeraj/4.0f));
-			Platforma* cevTanka2 = new Platforma(vec2(k4p.x + horpomeraj * 3.0f, k4p.y + verpomeraj*2.0f + verpomeraj *0.75f), vec2(horpomeraj * 5.0f, verpomeraj / 4.0f));
+			Platforma* cevTanka1 = new Platforma(vec2(k4p.x+horpomeraj*4.0f,k4p.y+verpomeraj),vec2(horpomeraj*6.0f,verpomeraj/4.0f));
+			Platforma* cevTanka2 = new Platforma(vec2(k4p.x + horpomeraj * 2.0f, k4p.y + verpomeraj*2.0f + verpomeraj *0.75f), vec2(horpomeraj * 6.0f, verpomeraj / 4.0f));
 			k4->dodajObjekat(cevTanka1);
 			k4->dodajObjekat(cevTanka2);
 			//pa onda jedna malo nize..
@@ -402,12 +403,12 @@ void Nivo::ucitajKvadrant() {
 			k4->dodajObjekat(srednjiKanap2);
 
 			//i za kraj mali kanapcici od vrha ka dole
-			Merdevine* maliKanap1 = new Merdevine(vec2(k4p.x+horpomeraj*7.0f,k4p.y),vec2(horpomeraj/4.0f,verpomeraj));
-			Merdevine* maliKanap2 = new Merdevine(vec2(k4p.x + horpomeraj * 7.0f, k4p.y+verpomeraj+verpomeraj/4.0f), vec2(horpomeraj / 4.0f, verpomeraj+verpomeraj/8.0f));
-			Merdevine* maliKanap3 = new Merdevine(vec2(k4p.x + horpomeraj * 12.0f, k4p.y+verpomeraj), vec2(horpomeraj / 4.0f, verpomeraj*2.0f-verpomeraj/8.0f));
-			Merdevine* maliKanap4 = new Merdevine(vec2(k4p.x + horpomeraj * 8.0f, k4p.y+verpomeraj*5.0f), vec2(horpomeraj / 4.0f, verpomeraj*2.0f-verpomeraj/8.0f));
-			Merdevine* maliKanap5 = new Merdevine(vec2(k4p.x + horpomeraj * 4.0f, k4p.y + verpomeraj*5.0f), vec2(horpomeraj / 4.0f, verpomeraj * 2.0f - verpomeraj / 8.0f));
-			Merdevine* maliKanap6 = new Merdevine(vec2(k4p.x + horpomeraj * 4.0f, k4p.y + verpomeraj*7.0f), vec2(horpomeraj / 4.0f, verpomeraj * 2.0f - verpomeraj / 8.0f));
+			Merdevine* maliKanap1 = new Merdevine(vec2(k4p.x+horpomeraj*7.0f+horpomeraj*0.375f,k4p.y),vec2(horpomeraj/4.0f,verpomeraj));
+			Merdevine* maliKanap2 = new Merdevine(vec2(k4p.x + horpomeraj * 5.0f+horpomeraj*0.375f, k4p.y+verpomeraj+verpomeraj/4.0f), vec2(horpomeraj / 4.0f, verpomeraj+verpomeraj/8.0f));
+			Merdevine* maliKanap3 = new Merdevine(vec2(k4p.x + horpomeraj * 12.0f+horpomeraj*0.375f, k4p.y+verpomeraj), vec2(horpomeraj / 4.0f, verpomeraj*2.0f-verpomeraj/8.0f));
+			Merdevine* maliKanap4 = new Merdevine(vec2(k4p.x + horpomeraj * 8.0f+horpomeraj*0.375f, k4p.y+verpomeraj*5.0f), vec2(horpomeraj / 4.0f, verpomeraj*2.0f-verpomeraj/8.0f));
+			Merdevine* maliKanap5 = new Merdevine(vec2(k4p.x + horpomeraj * 4.0f+horpomeraj*0.375f, k4p.y + verpomeraj*5.0f), vec2(horpomeraj / 4.0f, verpomeraj * 2.0f - verpomeraj / 4.0f));
+			Merdevine* maliKanap6 = new Merdevine(vec2(k4p.x + horpomeraj * 4.0f+horpomeraj*0.375f, k4p.y + verpomeraj*7.0f+verpomeraj/8.0f), vec2(horpomeraj / 4.0f, verpomeraj * 2.0f - verpomeraj / 4.0f));
 
 
 			k4->dodajObjekat(maliKanap1);
@@ -420,9 +421,9 @@ void Nivo::ucitajKvadrant() {
 			//I ZA KRAJ PORTALIII! IMA IH SVEGA 7!!! Zovem ih cevka ovde jer ce izgledati kao da igrac udje u cevku i izadje na drugu
 			Portal* cevka1 = new Portal(vec2(k4p.x+horpomeraj*15.0f,k4p.y+verpomeraj*2.0f),vec2(horpomeraj/4.0f,verpomeraj),vec2(k4p.x+horpomeraj*12.0f+horpomeraj/4.0f, k4p.y+verpomeraj+verpomeraj/4.0f));
 			Portal* cevka2 = new Portal(vec2(k4p.x + horpomeraj * 11.0f, k4p.y + verpomeraj * 4.0f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+horpomeraj * 11.0f + horpomeraj / 4.0f, k4p.y+verpomeraj*5.0f + verpomeraj / 4.0f));
-			Portal* cevka3 = new Portal(vec2(k4p.x + horpomeraj * 11.0f, k4p.y + verpomeraj * 10.0f + verpomeraj*0.75f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+horpomeraj * 15.0f + horpomeraj / 4.0f, k4p.y+verpomeraj * 10.0f - verpomeraj / 4.0f));
+			Portal* cevka3 = new Portal(vec2(k4p.x + horpomeraj * 11.0f, k4p.y + verpomeraj * 10.0f + verpomeraj*0.75f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+horpomeraj * 15.0f + horpomeraj / 4.0f, k4p.y+verpomeraj * 10.0f));
 			Portal* cevka4 = new Portal(vec2(k4p.x + horpomeraj * 15.0f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+ horpomeraj * 13.0f + horpomeraj / 4.0f, k4p.y+ verpomeraj *5.0f + verpomeraj / 4.0f));
-			Portal* cevka5 = new Portal(vec2(k4p.x + horpomeraj * 13.0f, k4p.y + verpomeraj * 10.0f + verpomeraj*0.75f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+ horpomeraj * 9.0f - horpomeraj / 4.0f, k4p.y+ verpomeraj / 4.0f));
+			Portal* cevka5 = new Portal(vec2(k4p.x + horpomeraj * 13.0f, k4p.y + verpomeraj * 10.0f + verpomeraj*0.75f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+ horpomeraj * 9.0f + horpomeraj / 4.0f, k4p.y+ verpomeraj / 4.0f));
 			Portal* cevka6 = new Portal(vec2(k4p.x + horpomeraj * 6.0f, k4p.y + verpomeraj * 4.0f+verpomeraj*0.75f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x+ horpomeraj + horpomeraj / 4.0f, k4p.y+ verpomeraj*10.0f + verpomeraj / 4.0f));
 			Portal* cevka7 = new Portal(vec2(k4p.x + horpomeraj * 8.0f, k4p.y + verpomeraj * 5.0f), vec2(horpomeraj, verpomeraj/4.0f), vec2(k4p.x +horpomeraj + horpomeraj / 4.0f, k4p.y+ verpomeraj + verpomeraj / 4.0f));
 
@@ -436,7 +437,7 @@ void Nivo::ucitajKvadrant() {
 
 			//NEPRIJATELJI 4. kvadranta
 			//prvo dva mala krokodilcica, ili aligatora?
-			Neprijatelj* krokodilcic1 = new Neprijatelj(vec2(k4p.x+horpomeraj*4.0f,k4p.y+verpomeraj*6.0f+verpomeraj/4.0f),vec2(horpomeraj-horpomeraj/8.0f,verpomeraj/2.0f),Kretanje::Horizontalno,100.0f,5.0f*horpomeraj);
+			Neprijatelj* krokodilcic1 = new Neprijatelj(vec2(k4p.x+horpomeraj*4.0f,k4p.y+verpomeraj*6.0f+verpomeraj*0.375f),vec2(horpomeraj-horpomeraj/8.0f,verpomeraj/2.0f),Kretanje::Horizontalno,100.0f,5.0f*horpomeraj);
 			Neprijatelj* krokodilcic2 = new Neprijatelj(vec2(k4p.x + horpomeraj * 4.0f, k4p.y + verpomeraj * 10.0f + verpomeraj / 2.0f), vec2(horpomeraj-horpomeraj/8.0f, verpomeraj / 2.0f), Kretanje::Horizontalno, 100.0f, 5.0f * horpomeraj);
 			k4->dodajObjekat(krokodilcic1);
 			k4->dodajObjekat(krokodilcic2);
@@ -462,8 +463,20 @@ void Nivo::ucitajKvadrant() {
 			k4->dodajObjekat(otrovPljuca1);
 			k4->dodajObjekat(otrovPljuca2);
 			k4->dodajObjekat(otrovPljuca3);
-
-
+			Neprijatelj* zmijica1 = new Neprijatelj(vec2(k4p.x+horpomeraj*12.0f+horpomeraj/2.0f,k4p.y+verpomeraj*6.0f+verpomeraj/2.0f),vec2(horpomeraj/1.5f,verpomeraj/3.0f),Kretanje::Horizontalno,125.0f,horpomeraj*3.0f,false,1);
+			Neprijatelj* zmijica2 = new Neprijatelj(vec2(k4p.x + horpomeraj * 16.0f -horpomeraj/1.5f, k4p.y + verpomeraj * 7.0f + verpomeraj / 2.0f), vec2(horpomeraj / 1.5f, verpomeraj / 3.0f), Kretanje::Horizontalno, 125.0f, horpomeraj * 3.0f, false, -1);
+			Neprijatelj* zmijica3 = new Neprijatelj(vec2(k4p.x + horpomeraj * 12.0f + horpomeraj / 2.0f, k4p.y + verpomeraj * 8.0f + verpomeraj / 2.0f), vec2(horpomeraj / 1.5f, verpomeraj / 3.0f), Kretanje::Horizontalno, 125.0f, horpomeraj * 3.0f, false, 1);
+			Neprijatelj* zmijica4 = new Neprijatelj(vec2(k4p.x + horpomeraj * 16.0f -horpomeraj/1.5f, k4p.y + verpomeraj * 9.0f + verpomeraj / 2.0f), vec2(horpomeraj / 1.5f, verpomeraj / 3.0f), Kretanje::Horizontalno, 125.0f, horpomeraj * 3.0f, false, -1);
+			k4->dodajObjekat(zmijica1);
+			k4->dodajObjekat(zmijica2);
+			k4->dodajObjekat(zmijica3);
+			k4->dodajObjekat(zmijica4);
+			Neprijatelj* zmijicaGornja1 = new Neprijatelj(vec2(k4p.x+horpomeraj*8,k4p.y+verpomeraj*0.66f),vec2(horpomeraj/1.5f,verpomeraj/3.0f),Kretanje::Horizontalno,135.0f,horpomeraj*4.0f,false,-1);
+			Neprijatelj* zmijicaGornja2 = new Neprijatelj(vec2(k4p.x + horpomeraj * 4, k4p.y +verpomeraj*2.0f+ verpomeraj * 0.4f), vec2(horpomeraj / 1.5f, verpomeraj / 3.0f), Kretanje::Horizontalno, 135.0f, horpomeraj * 2.5f, false, 1);
+			k4->dodajObjekat(zmijicaGornja1);
+			k4->dodajObjekat(zmijicaGornja2);
+			Neprijatelj* zmijicaDonja1 = new Neprijatelj(vec2(k4p.x+horpomeraj,k4p.y+verpomeraj*9.0f-verpomeraj/3.0f),vec2(horpomeraj/1.5f,verpomeraj/3.0f),Kretanje::Horizontalno,110.0f,3.0f*horpomeraj,false,1);
+			k4->dodajObjekat(zmijicaDonja1);
 
 			//POSLEDNJI sir!!! Najbolje za kraj!
 			Cilj* sir4 = new Cilj(vec2(k4p.x+22.0f,k4p.y+verpomeraj+16.0f),vec2(16.0f,16.0f));

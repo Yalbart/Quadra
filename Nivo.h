@@ -1,6 +1,7 @@
 #pragma once
 #include "Kvadrant.h"
 #include <vector>
+#include <functional> 
 
 class Renderer;
 class Menadzer;
@@ -15,6 +16,13 @@ public:
 	void update(float deltaTime);
 	void render();
 	bool jelPredjen() const;
+	
+	//13.07.
+	std::function<void()> skupljenSir;
+
+	void jelRipno(std::function<void()> rip);
+	void resetSveIgrace();
+	
 private:
 	std::vector<Kvadrant*> kvadranti;
 	int trenutniKvadrant;

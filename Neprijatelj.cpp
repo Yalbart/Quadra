@@ -30,5 +30,6 @@ void Neprijatelj::render(Renderer& renderer) {
 	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel,vec3(1.0f,0.0f,0.0f));
 }
 void Neprijatelj::kolizija(Igrac* igrac) {
-	igrac->reset(igrac->getPocPozicija());
+	igrac->setRip(true);
+	//igrac->reset(igrac->getPocPozicija());
 }

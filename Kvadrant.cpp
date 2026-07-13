@@ -78,6 +78,10 @@ void Kvadrant::setujIgraca(Igrac* igrac) {
 	this->igrac = igrac;
 }
 
+Igrac* Kvadrant::getIgraca() {
+	return igrac;
+}
+
 void Kvadrant::setujCilj(Cilj* cilj) {
 	this->cilj = cilj;
 }

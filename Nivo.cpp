@@ -63,6 +63,24 @@ bool Nivo::jelPredjen() const {
 	
 }
 
+void Nivo::jelRipno(std::function<void()> rip) {
+	for (Kvadrant* k : kvadranti) {
+		Igrac* igrac = k->getIgraca();
+		if (igrac && igrac->jelRip()) {
+			igrac->resetujRip();
+			rip();
+		}
+	}
+}
+
+void Nivo::resetSveIgrace() {
+	for (Kvadrant* k : kvadranti) {
+		Igrac* igrac = k->getIgraca();
+		if (igrac)
+			igrac->reset(igrac->getPocPozicija());
+	}
+}
+
 //BITNO!!! u trenutnom buildu (a mozda tako i ostane) u kvadrant treba PRVO dodati MERDEVINE
 //a tek ONDA platforme, u sustini nastaje jedan verovatno lako resiv bug gde igrac propada kroz platformu
 //jer se prvo gleda kolizija sa merdevinama a tek onda platformor svaki frejm

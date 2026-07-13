@@ -15,7 +15,7 @@ Igrac::Igrac(vec2 poz, vec2 vel):Objekat(poz, vel){
 	this->pocPozicija = poz;
 	this->naZemlji = false;
 	this->naMerdevinama = false;
-
+	this->rip = false;
 }
 
 void Igrac::procesInputa(InputHendler* inputi) {
@@ -96,4 +96,20 @@ void Igrac::setUbrzanjeY(float v) {
 
 void Igrac::resetUbrzanje() {
 	ubrzanje = vec2(0.0, 0.0);
+}
+
+bool Igrac::jelRip() const{
+	return rip;
+}
+
+void Igrac::resetujRip() {
+	rip = false;
+}
+
+void Igrac::setRip(bool novRip) {
+	rip = novRip;
+}
+
+void Igrac::setPocPoz(vec2 novaPocPoz) {
+	this->pocPozicija = novaPocPoz;
 }

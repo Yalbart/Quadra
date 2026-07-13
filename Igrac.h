@@ -23,11 +23,20 @@ public:
 	vec2 getPocPozicija();
 	void setUbrzanjeY(float v);
 	void resetUbrzanje();
+
+	//13.0f.
+	bool jelRip() const;
+	void setRip(bool novRip);
+	void resetujRip();
+	void setPocPoz(vec2 novaPocPoz);
+	
 private:
 	vec2 ubrzanje;
 	vec2 pocPozicija;
 	bool naZemlji;
 	bool naMerdevinama;
+	bool rip;
+
 	//ove vrednosti su mi staticne i konstante jer je lakse za podesavanje umesto da koristim neke
 	//medzik brojeve i generalno bi to bio spagete kod
 	static const float brzinaKretanja;

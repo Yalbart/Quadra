@@ -14,6 +14,12 @@ Igra::Igra(int argc, char** argv) {
 	menadzerResursa = new Menadzer();
 	inputHendler = new InputHendler();
 	nivo = new Nivo(renderer,menadzerResursa, sirinaProz, visinaProz);
+	stanje = StanjeIgre::IgraSe;
+	zivoti = 3;
+	brSkupljenogSira = 0;
+
+	//13.07.
+	nivo->skupljenSir = [this]() {pojedenSir();};
 }
 
 Igra::~Igra() {
@@ -37,17 +43,34 @@ void Igra::update() {
 	lastTime = trenVreme;
 
 	if (deltaTime > 0.05f) deltaTime = 0.05f; //ovo ce da cappuje delta vreme na 0.05, resava jedan bug kad se pokrene program.
+	if (stanje != StanjeIgre::IgraSe)
+		return;
 
 	nivo->update(deltaTime);
+
+	//proverava da li je ovaj frejm igrac "ripno" tj bio u koliziji sa neprijateljem
+	nivo->jelRipno([this]() {ripIgrac(); });
+	if (brSkupljenogSira >= 4)
+		stanje = StanjeIgre::Pobeda;
 }
 
 void Igra::render() {
 	renderer->clear();
-	nivo->render();
-	renderer->crtajLinije(sirinaProz, visinaProz);
+	if (stanje == StanjeIgre::IgraSe) {
+		nivo->render();
+		renderer->crtajLinije(sirinaProz, visinaProz);
+	}
+	else if (stanje == StanjeIgre::IzgubioSi) {
+
+	}
+	else if (stanje == StanjeIgre::Pobeda) {
+
+	}
+	
 	glutSwapBuffers();
 }
-
+	
+	//pravi prozor inicira glut i glew
 void Igra::napraviProzor(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
@@ -100,4 +123,19 @@ void Igra::specDoleCallback(int dugme, int x, int y) {
 void Igra::specGoreCallback(int dugme, int x, int y) {
 	std::cout << "KEY UP fired: " << dugme << std::endl;
 	instanca->inputHendler->specGore(dugme);
+}
+
+void Igra::ripIgrac() {
+	zivoti--;
+	if (zivoti <= 0)
+		stanje = StanjeIgre::IzgubioSi;
+	else
+		nivo->resetSveIgrace();
+}
+
+void Igra::pojedenSir() {
+	brSkupljenogSira++;
+	if (zivoti < 3) zivoti++;
+	if (brSkupljenogSira >= 4)
+		stanje = StanjeIgre::Pobeda;
 }

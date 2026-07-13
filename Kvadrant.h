@@ -27,6 +27,7 @@ public:
 	void dodajObjekat(Objekat* objekat);
 	void setujIgraca(Igrac* igrac);
 	void setujCilj(Cilj* cilj);
+	Igrac* getIgraca();
 	vec2 pomeraj; // dodato 20.06. ovo sluzi za scale-ovanje sa dimenzijama ekrana i crtanje kvadranta na ekranu, pomeraj izmedju kvadranta
 private:
 	vector<Objekat*> objekti;

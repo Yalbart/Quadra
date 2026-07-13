@@ -4,6 +4,12 @@
 #include "InputHendler.h"
 #include "Nivo.h"
 
+enum class StanjeIgre {
+	IgraSe,
+	IzgubioSi,
+	Pobeda
+};
+
 class Igra {
 public:
 	Igra(int argc, char** argv);
@@ -14,7 +20,10 @@ private:
 	Menadzer* menadzerResursa;
 	InputHendler* inputHendler;
 	Nivo* nivo;
+	StanjeIgre stanje;
 	bool jelRun;
+	int zivoti;
+	int brSkupljenogSira;
 	int sirinaProz;
 	int visinaProz;
 	float lastTime;
@@ -24,6 +33,8 @@ private:
 	void update();
 	void render();
 	void napraviProzor(int argc, char** argv);
+	void ripIgrac();
+	void pojedenSir();
 
 	static Igra* instanca;
 	static void displejCallback();

@@ -13,13 +13,15 @@ Igra::Igra(int argc, char** argv) {
 	renderer = new Renderer(sirinaProz, visinaProz);
 	menadzerResursa = new Menadzer();
 	inputHendler = new InputHendler();
-	nivo = new Nivo(renderer,menadzerResursa, sirinaProz, visinaProz);
+	nivo = new Nivo(renderer,menadzerResursa, sirinaProz, visinaProz, &brSkupljenogSira);
 	stanje = StanjeIgre::IgraSe;
 	zivoti = 3;
-	brSkupljenogSira = 0;
+	
+	
 
 	//13.07.
-	nivo->skupljenSir = [this]() {pojedenSir();};
+	
+	
 }
 
 Igra::~Igra() {
@@ -50,8 +52,22 @@ void Igra::update() {
 
 	//proverava da li je ovaj frejm igrac "ripno" tj bio u koliziji sa neprijateljem
 	nivo->jelRipno([this]() {ripIgrac(); });
-	if (brSkupljenogSira >= 4)
+
+	if (brSkupljenogSira >= 4) {
 		stanje = StanjeIgre::Pobeda;
+		cout << "POBEDA!!!" << endl;
+	}
+
+	//int pomocniSirCounter = brSkupljenogSira;
+	//brSkupljenogSira = nivo->brojSakupljenihSireva();
+	//if (brSkupljenogSira >= 4)
+	//	stanje = StanjeIgre::Pobeda;
+	//if (brSkupljenogSira > pomocniSirCounter) {
+	//	zivoti++;
+	//}
+
+	//cout <<"ZIVOTI:" << this->zivoti << endl;
+	//cout << "Pojedenih sireva br: " << this->brSkupljenogSira << endl;
 }
 
 void Igra::render() {
@@ -127,14 +143,18 @@ void Igra::specGoreCallback(int dugme, int x, int y) {
 
 void Igra::ripIgrac() {
 	zivoti--;
-	if (zivoti <= 0)
+	if (zivoti <= 0) {
 		stanje = StanjeIgre::IzgubioSi;
-	else
+		cout << "GEJM OVER!!!" << endl;
+	}
+	else {
 		nivo->resetSveIgrace();
+		cout << "UDAREN SI! Broj zivota preostalo: " << zivoti << endl;
+	}
 }
-
 void Igra::pojedenSir() {
 	brSkupljenogSira++;
+	std::cout << "Skupljen sir!!! br sireva: " << brSkupljenogSira << std::endl;
 	if (zivoti < 3) zivoti++;
 	if (brSkupljenogSira >= 4)
 		stanje = StanjeIgre::Pobeda;

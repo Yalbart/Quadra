@@ -8,6 +8,7 @@ Kvadrant::Kvadrant(Renderer* renderer, Menadzer* resursi, vec2 pomeraj) {
 	this->cilj = nullptr;
 	this->predjen = false;
 	this->pomeraj = pomeraj;
+	
 
 }
 
@@ -28,11 +29,24 @@ void Kvadrant::procesInputa(InputHendler* inputi) {
 void Kvadrant::update(float deltaTime) {
 	for (Objekat* objekat : objekti) {
 		objekat->update(deltaTime);
+		/*if (objekat->jelSkupljenSir) {
+			sakupljeniSirevi++;
+			objekat->jelSkupljenSir = false;// dodato 13.07. valjda ce mi popraviti dva bug-a koja imam... vezani su za brisanje i nepravilno inkrementiranje sira
+		}*/
 	}
 
 	kontrolaKolizija();
-	KontrolaIzlazaIzKvadranta(); //il kako god se vec zove ovo
+	//KontrolaIzlazaIzKvadranta(); //il kako god se vec zove ovo
+
+	//dodato 13.07. loop za checkovanje sta treba da se obrise (za ciljeve/sir konkretno)
+	objekti.erase(
+		std::remove_if(objekti.begin(), objekti.end(), [](Objekat* obj) {
+			if (obj->oznacenZaBrisanje) {
+				delete obj;
+				return true;
+			}return false;}),objekti.end());
 }
+
 
 void Kvadrant::render() {
 	for (Objekat* objekat : objekti)
@@ -58,7 +72,7 @@ void Kvadrant::kontrolaKolizija() {
 			Merdevine* merdevine = dynamic_cast<Merdevine*>(objekat);
 			if (merdevine) {
 				merdevine->kolizija(igrac);
-				continue; // skip platform resolution for ladders
+				continue; //ovo je bio pokusaj da popravim bug sa platformama i merdevinama al sam "resio" na drugi nacin a ovo je ostalo ovako jer ne kvari nista
 			}
 			objekat->kolizija(igrac);
 		}
@@ -85,4 +99,9 @@ Igrac* Kvadrant::getIgraca() {
 void Kvadrant::setujCilj(Cilj* cilj) {
 	this->cilj = cilj;
 }
+
+vector<Objekat*>& Kvadrant::getObjekte() {
+	return objekti;
+}
+
 

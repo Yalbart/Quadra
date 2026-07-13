@@ -15,6 +15,10 @@ public:
 	Igra(int argc, char** argv);
 	~Igra();
 	void run();
+
+	void ripIgrac();
+	void pojedenSir();
+
 private:
 	Renderer* renderer;
 	Menadzer* menadzerResursa;
@@ -23,7 +27,8 @@ private:
 	StanjeIgre stanje;
 	bool jelRun;
 	int zivoti;
-	int brSkupljenogSira;
+	int brSkupljenogSira = 0;
+
 	int sirinaProz;
 	int visinaProz;
 	float lastTime;
@@ -33,8 +38,8 @@ private:
 	void update();
 	void render();
 	void napraviProzor(int argc, char** argv);
-	void ripIgrac();
-	void pojedenSir();
+
+
 
 	static Igra* instanca;
 	static void displejCallback();

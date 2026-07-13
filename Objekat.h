@@ -17,4 +17,6 @@ public:
 	virtual void render(Renderer& renderer) = 0; // virtual metode koje su =0 cini klasu abstraktnom
 			// ovo je tako jer necemo koristiti objekat klasu direktno, samo klase koje ga nasledjuju
 	virtual void kolizija(Igrac* igrac) {}
+
+	bool oznacenZaBrisanje = false; //dodato 13.07. radi brisanja sireva kad ih uzmemo
 };

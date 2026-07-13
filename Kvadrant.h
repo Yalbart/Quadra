@@ -15,6 +15,7 @@
 class Renderer;
 class Menadzer;
 class InputHendler;
+class Igra;
 
 class Kvadrant {
 public:
@@ -28,6 +29,10 @@ public:
 	void setujIgraca(Igrac* igrac);
 	void setujCilj(Cilj* cilj);
 	Igrac* getIgraca();
+	vector<Objekat*>& getObjekte(); //dodato 13.07. sluzi za probelm sa sirom
+	
+
+
 	vec2 pomeraj; // dodato 20.06. ovo sluzi za scale-ovanje sa dimenzijama ekrana i crtanje kvadranta na ekranu, pomeraj izmedju kvadranta
 private:
 	vector<Objekat*> objekti;
@@ -38,4 +43,5 @@ private:
 	bool predjen; // flag da li je kvadrant predjen, trebace za tajmer
 	void kontrolaKolizija();
 	void KontrolaIzlazaIzKvadranta();
+
 };

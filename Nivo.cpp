@@ -10,7 +10,7 @@
 #include "Kretanje.h"
 #include "Portal.h"
 
-Nivo::Nivo(Renderer* renderer, Menadzer* resursi,int sirinaProz,int visinaProz ): igrac(nullptr) {
+Nivo::Nivo(Renderer* renderer, Menadzer* resursi,int sirinaProz,int visinaProz, int* brojacSiraP): igrac(nullptr),brojacSira(brojacSiraP) {
 	this->renderer = renderer;
 	this->resursi = resursi;
 	this->trenutniKvadrant = 0;
@@ -81,6 +81,16 @@ void Nivo::resetSveIgrace() {
 	}
 }
 
+//ovo ce se kao i za zivote funkcija pozivati u instanci klase Igra i proveravace svaki frejm br sira skupljenog (a ona druga trenutnih zivota) i u odnosu na to menjati stanje
+/*int Nivo::brojSakupljenihSireva() {
+	int br = 0;
+	for (Kvadrant* k : kvadranti) {
+		for (Objekat* obj : k->getObjekte())
+			br += k->brSakupljenihSireva();  //dodato i menjano 13.07. vezano za dva mini bug-a prevremenog brisanja i nepravilnog inkrementiranja sira
+	}
+	return br;
+}*/
+
 //BITNO!!! u trenutnom buildu (a mozda tako i ostane) u kvadrant treba PRVO dodati MERDEVINE
 //a tek ONDA platforme, u sustini nastaje jedan verovatno lako resiv bug gde igrac propada kroz platformu
 //jer se prvo gleda kolizija sa merdevinama a tek onda platformor svaki frejm
@@ -100,10 +110,10 @@ void Nivo::ucitajKvadrant() {
 	Kvadrant* k1 = new Kvadrant(renderer, resursi,vec2(0.0f,0.0f)); // gore levo, prvi kvadrant 
 	Kvadrant* k2 = new Kvadrant(renderer, resursi, k2p); // gore desno, drugi kvadrant
 	Kvadrant* k3 = new Kvadrant(renderer, resursi, k3p); //dole desno
-	Kvadrant* k4 = new Kvadrant(renderer, resursi, vec2(0.0f, vk)); //dole levo
+	Kvadrant* k4 = new Kvadrant(renderer, resursi, k4p); //dole levo
 
 	//gore levo pocinje igrac
-	igrac = new Igrac(vec2(k4p.x+horpomeraj*8.0f, k4p.y+verpomeraj*1.0f), vec2(sk/32.0f, vk/24.0f));
+	igrac = new Igrac(vec2(horpomeraj, verpomeraj*1.0f), vec2(sk/32.0f, vk/24.0f));
 	k1->setujIgraca(igrac);
 	k2->setujIgraca(igrac);
 	k3->setujIgraca(igrac);
@@ -201,10 +211,18 @@ void Nivo::ucitajKvadrant() {
 		k1->dodajObjekat(treciRedPlatf2);
 
 		//sir tj. cilj
-		Cilj* sir1 = new Cilj(vec2(horpomeraj*15+22.0f ,verpomeraj*8+16.0f), vec2(16.0f, 16.0f));
+		Cilj* sir1 = new Cilj(vec2(horpomeraj*15+22.0f ,verpomeraj*8+16.0f), vec2(16.0f, 16.0f), brojacSira);
 		k1->dodajObjekat(sir1);
 		k1->setujCilj(sir1);
-
+		/*Cilj* sirproba1 = new Cilj(vec2(horpomeraj * 3 + 22.0f, verpomeraj * 2 - 16.0f), vec2(16.0f, 16.0f), brojacSira);
+		k1->dodajObjekat(sirproba1);
+		k1->setujCilj(sirproba1);
+		Cilj* sirproba2 = new Cilj(vec2(horpomeraj * 4 + 22.0f, verpomeraj * 2-16.0f), vec2(16.0f, 16.0f), brojacSira);
+		k1->dodajObjekat(sirproba2);
+		k1->setujCilj(sirproba2);
+		Cilj* sirproba3 = new Cilj(vec2(horpomeraj * 5 + 22.0f, verpomeraj * 2-16.0f), vec2(16.0f, 16.0f), brojacSira);
+		k1->dodajObjekat(sirproba3);
+		k1->setujCilj(sirproba3);*/
 	
 	//dodajem igraca na kraju, kako bi se renderovao ispred svega ostalog
 	k1->dodajObjekat(igrac);
@@ -290,7 +308,7 @@ void Nivo::ucitajKvadrant() {
 		k2->dodajObjekat(portal1);
 
 		//cilj/sir drugi kvadrant
-		Cilj* sir2 = new Cilj(vec2(k2p.x + horpomeraj * 2 +22.0f, k2p.y + verpomeraj * 10+16.0f),vec2(16.0f,16.0f));
+		Cilj* sir2 = new Cilj(vec2(k2p.x + horpomeraj * 2 +22.0f, k2p.y + verpomeraj * 10+16.0f),vec2(16.0f,16.0f),brojacSira);
 		k2->dodajObjekat(sir2);
 		k2->setujCilj(sir2);
 
@@ -345,7 +363,7 @@ void Nivo::ucitajKvadrant() {
 			k3->dodajObjekat(new Merdevine(vec2(k3p.x + horpomeraj * 8 + 5.0f, k3p.y + verpomeraj * 3), vec2(sk / 20.0f, verpomeraj)));
 
 			//i za kraj sir treceg kvadranta.. bravo ako ste stigli dovde!
-			Cilj* sir3 = new Cilj(vec2(k3p.x + 22.0f, k3p.y + verpomeraj * 2 + 16.0f), vec2(16.0f, 16.0f));
+			Cilj* sir3 = new Cilj(vec2(k3p.x + 22.0f, k3p.y + verpomeraj * 2 + 16.0f), vec2(16.0f, 16.0f),brojacSira);
 			k2->dodajObjekat(sir3);
 			k2->setujCilj(sir3);
 
@@ -497,7 +515,7 @@ void Nivo::ucitajKvadrant() {
 			k4->dodajObjekat(zmijicaDonja1);
 
 			//POSLEDNJI sir!!! Najbolje za kraj!
-			Cilj* sir4 = new Cilj(vec2(k4p.x+22.0f,k4p.y+verpomeraj+16.0f),vec2(16.0f,16.0f));
+			Cilj* sir4 = new Cilj(vec2(k4p.x+22.0f,k4p.y+verpomeraj+16.0f),vec2(16.0f,16.0f),brojacSira);
 			k4->dodajObjekat(sir4);
 			k4->setujCilj(sir4);
 

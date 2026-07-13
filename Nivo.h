@@ -1,16 +1,16 @@
 #pragma once
 #include "Kvadrant.h"
 #include <vector>
-#include <functional> 
 
 class Renderer;
 class Menadzer;
 class InputHendler;
 class Igrac;
+class Igra;
 
 class Nivo {
 public:
-	Nivo(Renderer* renderer, Menadzer* menadzerResursa, int sirinaProz, int visinaProz);
+	Nivo(Renderer* renderer, Menadzer* menadzerResursa, int sirinaProz, int visinaProz, int* brojacSira);
 	~Nivo();
 	void procesInputa(InputHendler* inputi);
 	void update(float deltaTime);
@@ -18,10 +18,11 @@ public:
 	bool jelPredjen() const;
 	
 	//13.07.
-	std::function<void()> skupljenSir;
+	
 
 	void jelRipno(std::function<void()> rip);
 	void resetSveIgrace();
+	
 	
 private:
 	std::vector<Kvadrant*> kvadranti;
@@ -32,4 +33,6 @@ private:
 	Menadzer* resursi;
 	Igrac* igrac;
 	void ucitajKvadrant();
+
+	int* brojacSira;
 };

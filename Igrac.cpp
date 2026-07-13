@@ -43,7 +43,7 @@ void Igrac::update(float deltaTime) {
 		ubrzanje.y += gravitacija * deltaTime; //gravitacija radi samo ako igrac nije na merdevinama
 
 	poz += ubrzanje * deltaTime;
-
+	
 
 	naMerdevinama = false;
 	// ovo sam napisao ovako da ne bih pisao neku logiku sa skidanja sa merdevina

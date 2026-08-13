@@ -28,6 +28,7 @@ private:
 	bool jelRun;
 	int zivoti;
 	int brSkupljenogSira = 0;
+	int brSiraPredhodniFrejm = 0;
 
 	int sirinaProz;
 	int visinaProz;

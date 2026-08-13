@@ -1,6 +1,10 @@
 # Quadra
 OpenGL game, sandbox
 
+BITNO:
+main sadrzi instancu Igre, instanca sadrzi Nivo, Nivo sadrzi Kvadrant, Kvadrant sadrzi sve Objekte, svi oni dele Renderer i Menadzer kao i InputHendler, dole sam pisao neku vrstu komentara na githabu... Igra se detekcijom kolizija i obicnim brojacima...
+
+
 08.07.2026.
 ----------------------------------------------------------------------------------------------------------------------
 After 2 months of subtle work on this project, i've learned a whole lot. As it's my first "serious" project, i've wanted it to at least be written in a "nice" and "proper" way. Now of course it's far from finished or perfect, it's obvious from the way it's written and programmed that a newbie and an amateur built it, but i'm still happy with how it's turning out. :)

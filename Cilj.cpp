@@ -13,6 +13,7 @@ void Cilj::kolizija(Igrac* igrac) {
 		igrac->setPocPoz(poz);
 		if (brojacSira)
 			(*brojacSira)++;
+
 		//if (skupljenSirIzIgre)
 		//	skupljenSirIzIgre();
 		//igra->pojedenSir();

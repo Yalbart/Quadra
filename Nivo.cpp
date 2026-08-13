@@ -363,12 +363,12 @@ void Nivo::ucitajKvadrant() {
 			k3->dodajObjekat(new Merdevine(vec2(k3p.x + horpomeraj * 8 + 5.0f, k3p.y + verpomeraj * 3), vec2(sk / 20.0f, verpomeraj)));
 
 			//i za kraj sir treceg kvadranta.. bravo ako ste stigli dovde!
-			Cilj* sir3 = new Cilj(vec2(k3p.x + 22.0f, k3p.y + verpomeraj * 2 + 16.0f), vec2(16.0f, 16.0f),brojacSira);
-			k2->dodajObjekat(sir3);
-			k2->setujCilj(sir3);
+			
 
 		}
-
+		Cilj* sir3 = new Cilj(vec2(k3p.x + 22.0f, k3p.y + verpomeraj * 2 + 16.0f), vec2(16.0f, 16.0f), brojacSira);
+		k3->dodajObjekat(sir3);
+		k3->setujCilj(sir3);
 
 
 	//!!!CETVRTI KVADRANT OBJEKTI!!!:

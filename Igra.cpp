@@ -53,6 +53,12 @@ void Igra::update() {
 	//proverava da li je ovaj frejm igrac "ripno" tj bio u koliziji sa neprijateljem
 	nivo->jelRipno([this]() {ripIgrac(); });
 
+	int sirPomoc1 = 0;
+	if (brSkupljenogSira > brSiraPredhodniFrejm) {
+		zivoti++;
+		brSiraPredhodniFrejm++;
+	}
+
 	if (brSkupljenogSira >= 4) {
 		stanje = StanjeIgre::Pobeda;
 		cout << "POBEDA!!!" << endl;

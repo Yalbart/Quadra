@@ -7,5 +7,6 @@ Objekat::Objekat(vec2 poz, vec2 vel)
 	this->tekstura = nullptr;
 }
 
-// mogao sam i da koristim listu inicijalizacija clanova (dvotacka pre tela konstruktora)
-// ali se ovako lakse cita pa cu ovako koristiti inicijalizaciju
+Objekat::Objekat(vec2 poz, vec2 vel, Menadzer* resursi, const std::string& putanjaTeksture) : poz(poz), vel(vel), oznacenZaBrisanje(false) {
+	tekstura = &resursi->getTexture(putanjaTeksture);
+}

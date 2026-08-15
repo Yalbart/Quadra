@@ -5,7 +5,8 @@ Cilj::Cilj(vec2 poz, vec2 vel, int* brojac) : Objekat(poz, vel), brojacSira(broj
 }
 //void Cilj::update(float deltaTime);
 void Cilj::render(Renderer& renderer) {
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel,vec3(1.0f,1.0f,0.0f));
+	Texture& tex = tekstura ? *tekstura : renderer.getUmetnuTeksturu();
+	renderer.drawSprite(tex, poz, vel,vec3(1.0f,1.0f,0.0f));
 }
 void Cilj::kolizija(Igrac* igrac) {
 	if (!stigao) {

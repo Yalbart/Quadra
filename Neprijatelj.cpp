@@ -27,7 +27,8 @@ void Neprijatelj::update(float deltaTime){
 	}
 }
 void Neprijatelj::render(Renderer& renderer) {
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel,vec3(1.0f,0.0f,0.0f));
+	Texture& tex = tekstura ? *tekstura : renderer.getUmetnuTeksturu();
+	renderer.drawSprite(tex, poz, vel,vec3(1.0f,0.0f,0.0f));
 }
 void Neprijatelj::kolizija(Igrac* igrac) {
 	igrac->setRip(true);

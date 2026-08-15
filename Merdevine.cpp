@@ -8,7 +8,8 @@ Merdevine::Merdevine(vec2 poz, vec2 vel) :Objekat(poz, vel) {
 
 void Merdevine::update(float deltaTime){}
 void Merdevine::render(Renderer& renderer) {
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel,vec3(0.6f,0.3f,0.1f));
+	Texture& tex = tekstura ? *tekstura : renderer.getUmetnuTeksturu();
+	renderer.drawSprite(tex, poz, vel,vec3(0.6f,0.3f,0.1f));
 }
 void Merdevine::kolizija(Igrac* igrac) {
 	igrac->setNaMerdevinama(true);

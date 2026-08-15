@@ -44,7 +44,8 @@ void Platforma::update(float deltaTime) {
 }
 
 void Platforma::render(Renderer& renderer) {
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz, vel,vec3(0.5f,0.5f,0.5f));
+	Texture& tex = tekstura ? *tekstura : renderer.getUmetnuTeksturu();
+	renderer.drawSprite(tex, poz, vel,vec3(0.5f,0.5f,0.5f));
 }
 
 void Platforma::kolizija(Igrac* igrac) {

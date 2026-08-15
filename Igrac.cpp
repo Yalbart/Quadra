@@ -87,7 +87,8 @@ void Igrac::setPoz(vec2 novaPoz) {
 }
 
 void Igrac::render(Renderer& renderer){
-	renderer.drawSprite(renderer.getUmetnuTeksturu(), poz , vel, vec3(0.0f,1.0f,0.0f));
+	Texture& tex = tekstura ? *tekstura : renderer.getUmetnuTeksturu();
+	renderer.drawSprite(tex, poz , vel, vec3(0.0f,1.0f,0.0f));
 }
 
 void Igrac::setUbrzanjeY(float v) {

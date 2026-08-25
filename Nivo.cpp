@@ -146,7 +146,16 @@ void Nivo::ucitajKvadrant() {
 						k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 32.0f), Kretanje::Horizontalno, 25.0f, horpomeraj,1));
 				}
 			}
-		}
+		} 
+		//proba 25.08.2026.
+		/*
+		Platforma* proba = new Platforma(vec2(horpomeraj * 5, 0.0f), vec2(horpomeraj, verpomeraj));
+		if (proba->tekstura = &resursi->getTexture("teksture/zemljaq1.png"))
+			k1->dodajObjekat(proba);
+		else
+			cout << "ne radi";*/
+		
+		
 
 		//red broj 4, prvi red cevki sa kapljicama
 		if (i == 2 || i == 4 || i == 5 || i == 7 || i == 9 || i == 12) {

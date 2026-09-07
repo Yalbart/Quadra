@@ -18,6 +18,17 @@ Igrac::Igrac(vec2 poz, vec2 vel):Objekat(poz, vel){
 	this->rip = false;
 }
 
+Igrac::Igrac(vec2 poz, vec2 vel, Menadzer* resursi, const std::string& putanjaTeksture) :Objekat(poz, vel) {
+	this->ubrzanje.x = 0.0f;
+	this->ubrzanje.y = 0.0f;
+	this->pocPozicija = poz;
+	this->naZemlji = false;
+	this->naMerdevinama = false;
+	this->rip = false;
+	tekstura = &resursi->getTexture(putanjaTeksture);
+
+}
+
 void Igrac::procesInputa(InputHendler* inputi) {
 	//ovo znaci da ce non stop da se prvo stavi ubrzanje na 0, mora tako jer necu klizanje, igrac se zaustavlja u mestu cim nije pritisnuto dugme za kretanje
 

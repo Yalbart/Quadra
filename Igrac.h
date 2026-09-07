@@ -7,6 +7,8 @@ class Renderer;
 class Igrac : public Objekat {
 public:
 	Igrac(vec2 poz, vec2 vel);
+	Igrac(vec2 poz, vec2 vel, Menadzer* resursi, const std::string& putanjaTeksture);
+
 
 	void procesInputa(InputHendler* inputi);
 

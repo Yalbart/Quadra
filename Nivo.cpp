@@ -135,7 +135,7 @@ void Nivo::ucitajKvadrant() {
 	for (int i = 0; i < 16; i++) {
 		for (int j = 2; j < 4; j++) {
 			if (i != 3 && i != 6 && i != 10 && i != 11 && i != 13 && i != 14 && i != 15) 
-				k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f)));
+				k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f), resursi, "teksture/zemljaq1.png"));
 			
 			//bodlje i pomerajuce platforme u 2. i 3. redu
 			else if (i != 15) {
@@ -166,7 +166,7 @@ void Nivo::ucitajKvadrant() {
 		//redovi 6 i 7 platforme kockice, takodje merdevine za nizi nivo
 		for (int j = 6; j < 8; j++) {
 			if (i != 0)
-				k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f)));
+				k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f), resursi, "teksture/zemljaq1.png"));
 			else {
 				Merdevine* drugiRedMerdev = new Merdevine(vec2(horpomeraj * i + 5.0f, verpomeraj * j), vec2(sk / 20.0f, vk / 6.0f));
 				k1->dodajObjekat(drugiRedMerdev);
@@ -189,31 +189,31 @@ void Nivo::ucitajKvadrant() {
 		//redovi 9 i 10 platforme kockice
 		for (int j = 9; j < 11; j++) {
 			if (i < 2 || i>4 && i < 8 || i>13)
-				k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f)));
+				k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * j), vec2(sk / 16.0f, vk / 12.0f), resursi, "teksture/zemljaq1.png"));
 		}
 
 
 		//red 11 tj. poslednji red prvog kvadranta, sve platforme kockice
-		k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * 11), vec2(sk / 16.0f, vk / 12.0f)));
+		k1->dodajObjekat(new Platforma(vec2(horpomeraj * i, verpomeraj * 11), vec2(sk / 16.0f, vk / 12.0f), resursi, "teksture/zemljaq1.png"));
 
 	}
 
 		//merdevine 2. i 3. red
-		Platforma* prviRedPlatf = new Platforma(vec2(horpomeraj * 15, verpomeraj * 2), vec2(sk / 16.0f, vk / 32.0f));
+		Platforma* prviRedPlatf = new Platforma(vec2(horpomeraj * 15, verpomeraj * 2), vec2(sk / 16.0f, vk / 32.0f), resursi, "teksture/zemljaq1.png");
 		prviRedPlatf->vrhMerdevina(true);
 		Merdevine* prviRedMerdev = new Merdevine(vec2(horpomeraj * 15 + 5.0f, verpomeraj * 2), vec2(sk / 20.0f, vk / 3.0f));
 		k1->dodajObjekat(prviRedMerdev);
 		k1->dodajObjekat(prviRedPlatf);
 
 		//merdevine 9. red broj 1
-		Platforma* treciRedPlatf1 = new Platforma(vec2(horpomeraj * 4, verpomeraj * 9), vec2(sk / 16.0f, vk / 32.0f));
+		Platforma* treciRedPlatf1 = new Platforma(vec2(horpomeraj * 4, verpomeraj * 9), vec2(sk / 16.0f, vk / 32.0f), resursi, "teksture/zemljaq1.png");
 		treciRedPlatf1->vrhMerdevina(true);
 		Merdevine* treciRedMerdev1 = new Merdevine(vec2(horpomeraj * 4 + 5.0f, verpomeraj * 9), vec2(sk / 20.0f, vk / 6.0f));
 		k1->dodajObjekat(treciRedMerdev1);
 		k1->dodajObjekat(treciRedPlatf1);
 
 		//merdevine 9. red broj 2
-		Platforma* treciRedPlatf2 = new Platforma(vec2(horpomeraj * 13, verpomeraj * 9), vec2(sk / 16.0f, vk / 32.0f));
+		Platforma* treciRedPlatf2 = new Platforma(vec2(horpomeraj * 13, verpomeraj * 9), vec2(sk / 16.0f, vk / 32.0f), resursi, "teksture/zemljaq1.png");
 		treciRedPlatf2->vrhMerdevina(true);
 		Merdevine* treciRedMerdev2 = new Merdevine(vec2(horpomeraj * 13 + 5.0f, verpomeraj * 9), vec2(sk / 20.0f, vk / 6.0f));
 		k1->dodajObjekat(treciRedMerdev2);

@@ -12,6 +12,17 @@ Platforma::Platforma(vec2 poz,vec2 vel): Objekat(poz,vel), tip(TipPlatforme::sta
 	this->smer = 1;
 	this->pocPoz = poz;
 }
+
+//07/09/2026 const za teksturu staticnu
+Platforma::Platforma(vec2 poz, vec2 vel, Menadzer* resursi, const std::string& putanjaTeksture) : Objekat(poz, vel), tip(TipPlatforme::staticna), kretanje(Kretanje::Horizontalno), resetPoz(false) {
+	this->brzina = 0.0f;
+	this->opseg = 0.0f;
+	this->predjenaDistanca = 0.0f;
+	this->smer = 1;
+	this->pocPoz = poz; 
+	tekstura = &resursi->getTexture(putanjaTeksture);
+}
+
 //dinamicna platforma, njen konstruktor
 Platforma::Platforma(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg,int smer, bool resetPoz) : Objekat(poz,vel),tip(TipPlatforme::dinamicna),kretanje(kretanje){
 	this->brzina = brzina;

@@ -3,6 +3,13 @@
 Cilj::Cilj(vec2 poz, vec2 vel, int* brojac) : Objekat(poz, vel), brojacSira(brojac) {
 	stigao = false;
 }
+
+Cilj::Cilj(vec2 poz, vec2 vel, int* brojac, Menadzer* resursi, const std::string& putanjaTeksture) : Objekat(poz, vel), brojacSira(brojac) {
+	stigao = false;
+	tekstura = &resursi->getTexture(putanjaTeksture);
+}
+
+
 //void Cilj::update(float deltaTime);
 void Cilj::render(Renderer& renderer) {
 	Texture& tex = tekstura ? *tekstura : renderer.getUmetnuTeksturu();

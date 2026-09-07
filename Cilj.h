@@ -10,6 +10,8 @@ class Igra;
 class Cilj : public Objekat {
 public:
 	Cilj(vec2 poz, vec2 vel, int* brojacSira);
+	Cilj(vec2 poz, vec2 vel, int* brojacSira, Menadzer* resursi, const std::string& putanjaTeksture);
+
 
 	void update(float deltaTime) override {};
 	void render(Renderer& renderer) override;

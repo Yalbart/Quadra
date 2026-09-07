@@ -11,6 +11,16 @@ Neprijatelj::Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, fl
 	this->resetPoz = resetPoz;
 }
 
+Neprijatelj::Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg, Menadzer* resursi, const std::string& putanjaTeksture, bool resetPoz, int smer, float pocDistanca) : Objekat(poz, vel), kretanje(kretanje) {
+	this->brzina = brzina;
+	this->opseg = opseg;
+	this->predjenaDistanca = pocDistanca;
+	this->smer = smer;
+	this->pocPozicija = poz;
+	this->resetPoz = resetPoz;
+	tekstura = &resursi->getTexture(putanjaTeksture);
+}
+
 void Neprijatelj::update(float deltaTime){
 	float pokret = brzina * smer * deltaTime;
 	if (kretanje == Kretanje::Horizontalno) 

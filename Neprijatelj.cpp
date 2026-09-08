@@ -11,6 +11,7 @@ Neprijatelj::Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, fl
 	this->resetPoz = resetPoz;
 }
 
+//note za neprijatelje 08.09.2026. tekstura mora da se umece na odredjen nacin, znaci nakon opsega se navode i prosledjuju resursi, pa putanja, pa onda ostatak konstruktora, jer default values moraju biti na kraju konstruktora
 Neprijatelj::Neprijatelj(vec2 poz, vec2 vel, Kretanje kretanje, float brzina, float opseg, Menadzer* resursi, const std::string& putanjaTeksture, bool resetPoz, int smer, float pocDistanca) : Objekat(poz, vel), kretanje(kretanje) {
 	this->brzina = brzina;
 	this->opseg = opseg;

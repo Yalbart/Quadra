@@ -35,6 +35,13 @@ private:
 	float lastTime;
 	float deltaTime;
 
+	Texture* hudZivoti;
+	Texture* hudSir;
+	Texture* brojevi[9];
+
+
+	void renderHUD();
+
 	void procesInputa();
 	void update();
 	void render();

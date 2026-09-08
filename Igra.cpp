@@ -14,6 +14,14 @@ Igra::Igra(int argc, char** argv) {
 	menadzerResursa = new Menadzer();
 	inputHendler = new InputHendler();
 	nivo = new Nivo(renderer,menadzerResursa, sirinaProz, visinaProz, &brSkupljenogSira);
+
+	//08.09.2026.
+	hudZivoti = &menadzerResursa->getTexture("teksture/srce.png");
+	hudSir = &menadzerResursa->getTexture("teksture/sir.png");
+	for (int i = 0; i <= 9; i++) {
+		brojevi[i] = &menadzerResursa->getTexture("teksture/br" + std::to_string(i) + ".png");
+	}
+
 	stanje = StanjeIgre::IgraSe;
 	zivoti = 3;
 	
@@ -80,7 +88,8 @@ void Igra::render() {
 	renderer->clear();
 	if (stanje == StanjeIgre::IgraSe) {
 		nivo->render();
-		renderer->crtajLinije(sirinaProz, visinaProz);
+		//renderer->crtajLinije(sirinaProz, visinaProz);
+		renderHUD();
 	}
 	else if (stanje == StanjeIgre::IzgubioSi) {
 
@@ -90,6 +99,23 @@ void Igra::render() {
 	}
 	
 	glutSwapBuffers();
+}
+
+void Igra::renderHUD() {
+	float vel = 32.0f;
+	float pad = 10.0f;
+
+	//srce
+	renderer->drawSprite(*hudZivoti, glm::vec2(pad, pad), glm::vec2(vel * 2, vel));
+
+	//br zivota
+	renderer->drawSprite(*brojevi[zivoti], glm::vec2(pad + vel * 2 + pad, pad), glm::vec2(vel, vel));
+
+	//sir
+	renderer->drawSprite(*hudSir, glm::vec2(pad + vel * 4, pad), glm::vec2(vel * 2, vel));
+
+	//br sira
+	renderer->drawSprite(*brojevi[brSkupljenogSira], glm::vec2(pad + vel * 6 + pad, pad), glm::vec2(vel, vel));
 }
 	
 	//pravi prozor inicira glut i glew

@@ -21,7 +21,7 @@ void Texture::bind() const {
 }
 
 void Texture::load(const std::string& filepath) {
-	stbi_set_flip_vertically_on_load(true);
+	//stbi_set_flip_vertically_on_load(true);
 	//neophodno, inace se slika crta naopacke
 	int kanali;
 	unsigned char* data = stbi_load(filepath.c_str(), &sirina, &visina, &kanali, 4);

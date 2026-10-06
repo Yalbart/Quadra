@@ -55,6 +55,8 @@ void Igra::procesInputa() {
 }
 
 void Igra::update() {
+	if (stanje != StanjeIgre::IgraSe) return;
+
 	float trenVreme = glutGet(GLUT_ELAPSED_TIME) / 1000.0f;
 	deltaTime = trenVreme - lastTime;
 	lastTime = trenVreme;
@@ -93,16 +95,20 @@ void Igra::update() {
 
 void Igra::render() {
 	renderer->clear();
-	if (stanje == StanjeIgre::IgraSe) {
+
+	if (stanje == StanjeIgre::GlavniMeni) {
+		renderGlavniMeni();
+	}
+	else if (stanje == StanjeIgre::IgraSe) {
 		nivo->render();
 		//renderer->crtajLinije(sirinaProz, visinaProz);
 		renderHUD();
 	}
 	else if (stanje == StanjeIgre::IzgubioSi) {
-
+		renderPoraz();
 	}
 	else if (stanje == StanjeIgre::Pobeda) {
-
+		renderPobeda();
 	}
 	
 	glutSwapBuffers();
@@ -160,10 +166,15 @@ void Igra::idleCallback() {
 }
 
 void Igra::doleCallback(unsigned char dugme, int x, int y) {
+	instanca->inputHendler->dole(dugme);
+
 	if (dugme == 27) //27 je ESC
 		exit(0);
 
-	instanca->inputHendler->dole(dugme);
+	if (instanca->stanje == StanjeIgre::GlavniMeni)
+		instanca->pokreniIgru();
+	else if (instanca->stanje == StanjeIgre::IzgubioSi)
+		instanca->vratiNaMeni();
 }
 
 void Igra::goreCallback(unsigned char dugme, int x, int y) {
@@ -173,6 +184,11 @@ void Igra::goreCallback(unsigned char dugme, int x, int y) {
 void Igra::specDoleCallback(int dugme, int x, int y) {
 	std::cout << "KEY DOWN fired: " << dugme << std::endl;
 	instanca->inputHendler->specDole(dugme);
+
+	if (instanca->stanje == StanjeIgre::GlavniMeni)
+		instanca->pokreniIgru();
+	else if (instanca->stanje == StanjeIgre::IzgubioSi)
+		instanca->vratiNaMeni();
 }
 
 void Igra::specGoreCallback(int dugme, int x, int y) {

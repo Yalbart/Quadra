@@ -5,6 +5,7 @@
 #include "Nivo.h"
 
 enum class StanjeIgre {
+	GlavniMeni,
 	IgraSe,
 	IzgubioSi,
 	Pobeda
@@ -37,10 +38,17 @@ private:
 
 	Texture* hudZivoti;
 	Texture* hudSir;
-	Texture* brojevi[9];
+	Texture* brojevi[10];
+	Texture* meniLogo;
+	Texture* meniKlikni;
+	Texture* texPobeda;
+	Texture* texPoraz;
 
 
 	void renderHUD();
+	void renderGlavniMeni();
+	void renderPobeda();
+	void renderPoraz();
 
 	void procesInputa();
 	void update();

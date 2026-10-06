@@ -207,3 +207,11 @@ void Igra::renderGlavniMeni() {
 	float klikVisina = visinaProz * 0.1f;
 	renderer->drawSprite(*meniKlikni, vec2(sirinaProz / 2.0f / klikSirina / 2.0f, visinaProz * 0.75f),vec2(klikSirina,klikVisina));
 }
+
+void Igra::renderPobeda() {
+	renderer->drawSprite(*texPobeda, vec2(sirinaProz / 2.0f - sirinaProz * 0.4f, visinaProz * 0.3f), vec2(sirinaProz * 0.4f, visinaProz * 0.4f));
+}
+
+void Igra::renderPoraz() {
+	renderer->drawSprite(*texPoraz, vec2(sirinaProz / 2.0f - sirinaProz * 0.4f, visinaProz * 0.3f), vec2(sirinaProz * 0.4f, visinaProz * 0.4f));
+}

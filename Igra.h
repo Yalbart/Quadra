@@ -50,6 +50,9 @@ private:
 	void renderPobeda();
 	void renderPoraz();
 
+	void pokreniIgru();
+	void vratiNaMeni();
+
 	void procesInputa();
 	void update();
 	void render();

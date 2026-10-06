@@ -49,6 +49,7 @@ void Igra::run() {
 	glutMainLoop();
 }
 
+
 void Igra::procesInputa() {
 	nivo->procesInputa(inputHendler);
 }
@@ -214,4 +215,19 @@ void Igra::renderPobeda() {
 
 void Igra::renderPoraz() {
 	renderer->drawSprite(*texPoraz, vec2(sirinaProz / 2.0f - sirinaProz * 0.4f, visinaProz * 0.3f), vec2(sirinaProz * 0.4f, visinaProz * 0.4f));
+}
+
+void Igra::pokreniIgru()
+{
+	stanje = StanjeIgre::IgraSe;
+}
+
+void Igra::vratiNaMeni()
+{
+	//reset svega, poziva se na Poraz ekranu
+	zivoti = 3;
+	brSkupljenogSira = 0;
+	delete nivo;
+	nivo = new Nivo(renderer, menadzerResursa, sirinaProz, visinaProz, &brSkupljenogSira);
+	stanje = StanjeIgre::GlavniMeni;
 }

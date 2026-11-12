@@ -220,7 +220,7 @@ void Nivo::ucitajKvadrant() {
 		k1->dodajObjekat(treciRedPlatf2);
 
 		//sir tj. cilj
-		Cilj* sir1 = new Cilj(vec2(horpomeraj*15+22.0f ,verpomeraj*8+16.0f), vec2(16.0f, 16.0f), brojacSira);
+		Cilj* sir1 = new Cilj(vec2(horpomeraj*15+22.0f ,verpomeraj*8+8.0f), vec2(32.0f, 32.0f), brojacSira,resursi,"teksture/sir1.png");
 		k1->dodajObjekat(sir1);
 		k1->setujCilj(sir1);
 		/*Cilj* sirproba1 = new Cilj(vec2(horpomeraj * 3 + 22.0f, verpomeraj * 2 - 16.0f), vec2(16.0f, 16.0f), brojacSira);

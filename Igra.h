@@ -44,7 +44,6 @@ private:
 	Texture* texPobeda;
 	Texture* texPoraz;
 
-
 	void renderHUD();
 	void renderGlavniMeni();
 	void renderPobeda();

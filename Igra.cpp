@@ -28,7 +28,7 @@ Igra::Igra(int argc, char** argv) : stanje(StanjeIgre::GlavniMeni){
 		brojevi[i] = &menadzerResursa->getTexture("teksture/br" + std::to_string(i) + ".png");
 	}
 
-	stanje = StanjeIgre::IgraSe;
+	
 	zivoti = 3;
 	
 	

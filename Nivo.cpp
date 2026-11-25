@@ -317,7 +317,7 @@ void Nivo::ucitajKvadrant() {
 		k2->dodajObjekat(portal1);
 
 		//cilj/sir drugi kvadrant
-		Cilj* sir2 = new Cilj(vec2(k2p.x + horpomeraj * 2 +22.0f, k2p.y + verpomeraj * 10+16.0f),vec2(16.0f,16.0f),brojacSira);
+		Cilj* sir2 = new Cilj(vec2(k2p.x + horpomeraj * 2 +22.0f, k2p.y + verpomeraj * 10+16.0f),vec2(32.0f,32.0f),brojacSira, resursi, "teksture/sir2.png");
 		k2->dodajObjekat(sir2);
 		k2->setujCilj(sir2);
 
@@ -375,7 +375,7 @@ void Nivo::ucitajKvadrant() {
 			
 
 		}
-		Cilj* sir3 = new Cilj(vec2(k3p.x + 22.0f, k3p.y + verpomeraj * 2 + 16.0f), vec2(16.0f, 16.0f), brojacSira);
+		Cilj* sir3 = new Cilj(vec2(k3p.x + 22.0f, k3p.y + verpomeraj * 2 + 16.0f), vec2(32.0f, 32.0f), brojacSira, resursi, "teksture/sir3.png");
 		k3->dodajObjekat(sir3);
 		k3->setujCilj(sir3);
 
@@ -524,7 +524,7 @@ void Nivo::ucitajKvadrant() {
 			k4->dodajObjekat(zmijicaDonja1);
 
 			//POSLEDNJI sir!!! Najbolje za kraj!
-			Cilj* sir4 = new Cilj(vec2(k4p.x+22.0f,k4p.y+verpomeraj+16.0f),vec2(16.0f,16.0f),brojacSira);
+			Cilj* sir4 = new Cilj(vec2(k4p.x+22.0f,k4p.y+verpomeraj+16.0f),vec2(32.0f,32.0f),brojacSira, resursi, "teksture/sir4.png");
 			k4->dodajObjekat(sir4);
 			k4->setujCilj(sir4);
 

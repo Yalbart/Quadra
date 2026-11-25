@@ -52,6 +52,7 @@ Renderer::Renderer(int sirinaProz, int visinaProz) {
     shaderProgram = 0;
     initShaders();
     initBuffers();
+    //25.11. alpha channel dodatak
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }

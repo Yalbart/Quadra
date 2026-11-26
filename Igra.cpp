@@ -15,7 +15,7 @@ Igra::Igra(int argc, char** argv) : stanje(StanjeIgre::GlavniMeni){
 	inputHendler = new InputHendler();
 	nivo = new Nivo(renderer,menadzerResursa, sirinaProz, visinaProz, &brSkupljenogSira);
 
-	meniLogo = &menadzerResursa->getTexture("teksture/meni_logo.png");
+	meniLogo = &menadzerResursa->getTexture("teksture/meni_logo3.png");
 	meniKlikni = &menadzerResursa->getTexture("teksture/meni_klikni.png");
 	texPobeda = &menadzerResursa->getTexture("teksture/pobeda.png");
 	texPoraz = &menadzerResursa->getTexture("teksture/poraz.png");
@@ -216,13 +216,13 @@ void Igra::pojedenSir() {
 }
 
 void Igra::renderGlavniMeni() {
-	float logoSirina = sirinaProz * 0.5f;
-	float logoVisina = visinaProz * 0.4f;
-	renderer->drawSprite(*meniLogo, vec2(sirinaProz / 2.0f - logoSirina / 2.0f, visinaProz * 0.2f), vec2(logoSirina, logoVisina));
+	float logoSirina = sirinaProz * 0.7f;
+	float logoVisina = visinaProz * 0.6f;
+	renderer->drawSprite(*meniLogo, vec2(sirinaProz / 2.0f - logoSirina / 2.0f, visinaProz * 0.1f), vec2(logoSirina, logoVisina));
 
 	float klikSirina = sirinaProz * 0.4f;
 	float klikVisina = visinaProz * 0.1f;
-	renderer->drawSprite(*meniKlikni, vec2(sirinaProz / 2.0f / klikSirina / 2.0f, visinaProz * 0.75f),vec2(klikSirina,klikVisina));
+	renderer->drawSprite(*meniKlikni, vec2(sirinaProz / 2.0f - klikSirina / 2.0f, visinaProz * 0.75f),vec2(klikSirina,klikVisina));
 }
 
 void Igra::renderPobeda() {

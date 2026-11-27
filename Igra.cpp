@@ -220,17 +220,21 @@ void Igra::renderGlavniMeni() {
 	float logoVisina = visinaProz * 0.6f;
 	renderer->drawSprite(*meniLogo, vec2(sirinaProz / 2.0f - logoSirina / 2.0f, visinaProz * 0.1f), vec2(logoSirina, logoVisina));
 
-	float klikSirina = sirinaProz * 0.4f;
-	float klikVisina = visinaProz * 0.1f;
+	float klikSirina = sirinaProz * 0.5f;
+	float klikVisina = visinaProz * 0.2f;
 	renderer->drawSprite(*meniKlikni, vec2(sirinaProz / 2.0f - klikSirina / 2.0f, visinaProz * 0.75f),vec2(klikSirina,klikVisina));
 }
 
 void Igra::renderPobeda() {
-	renderer->drawSprite(*texPobeda, vec2(sirinaProz / 2.0f - sirinaProz * 0.4f, visinaProz * 0.3f), vec2(sirinaProz * 0.4f, visinaProz * 0.4f));
+	float logoSirina = sirinaProz * 0.7f;
+	float logoVisina = visinaProz * 0.6f;
+	renderer->drawSprite(*texPobeda, vec2(sirinaProz / 2.0f - logoSirina / 2.0f, visinaProz * 0.1f), vec2(sirinaProz * 0.7f, visinaProz * 0.6f));
 }
 
 void Igra::renderPoraz() {
-	renderer->drawSprite(*texPoraz, vec2(sirinaProz / 2.0f - sirinaProz * 0.4f, visinaProz * 0.3f), vec2(sirinaProz * 0.4f, visinaProz * 0.4f));
+	float logoSirina = sirinaProz * 0.7f;
+	float logoVisina = visinaProz * 0.6f;
+	renderer->drawSprite(*texPoraz, vec2(sirinaProz / 2.0f - logoSirina / 2.0f, visinaProz * 0.1f), vec2(sirinaProz * 0.7f, visinaProz * 0.6f));
 }
 
 void Igra::pokreniIgru()
